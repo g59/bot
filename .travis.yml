@@ -4,6 +4,5 @@ node_js:
 - stable
 - '6'
 - '5'
-- '4'
 notifications:
   email: false
