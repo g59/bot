@@ -1,3 +1,7 @@
+flow-typed/
+dist/
+coverage/
+
 # Logs
 logs
 *.log
