@@ -13,7 +13,7 @@
   "devDependencies": {
     "@9renpoto/eslint-config-flowtype": "0.0.2",
     "eslint": "^3.11.0",
-    "flow-bin": "^0.36.0",
+    "flow-bin": "^0.37.0",
     "flow-typed": "^2.0.0",
     "mocha": "^3.2.0",
     "npm-run-all": "^3.1.1",
