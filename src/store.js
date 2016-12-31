@@ -1,21 +1,42 @@
 /* @flow */
 const redis = require('redis')
+const random = require('lodash').random
+
+type Hook = (cnt: number) => number
+
+const KEY = 'KARMASTORE'
 
 module.exports = class Karma {
   client: redis
   constructor () {
-    this.client = redis.createClient()
+    this.client = redis.createClient(process.env.REDIS_URL)
     this.client.on('error', err => {
-      console.log('Error ' + err)
+      if (err) {
+        throw err
+      }
     })
   }
-  up (thing: string, n: number): number {
-    return 1
+  up (member: string, n: number, cb: Hook) {
+    this.client.zscore(KEY, member, (err, prev) => {
+      if (err) {
+        return console.error(err)
+      }
+      if (prev) {
+        return this.client.zincrby(KEY, n, member, (err, res) => {
+          console.error(err, res)
+          cb(res)
+        })
+      }
+      return this.client.zadd([KEY, n, member], (err, res) => {
+        console.error('add', err, res)
+        cb(res)
+      })
+    })
   }
-  down (thing: string, n: number): number {
-    return 1
+  down (key: string, n: number, cb: Hook) {
+    this.up(key, n * -1, cb)
   }
-  random (thing: string, min: number = 1, max: number = 1): number {
-    return 1
+  random (key: string, min: number = 1, max: number = 1, cb: Hook) {
+    this.up(key, random(min, max), cb)
   }
 }
