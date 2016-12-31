@@ -1,11 +1,11 @@
 /* @flow */
 const redis = require('redis')
 
-class Karma {
+module.exports = class Karma {
   client: redis
   constructor () {
     this.client = redis.createClient()
-    this.client.on('error', function (err) {
+    this.client.on('error', err => {
       console.log('Error ' + err)
     })
   }
@@ -19,5 +19,3 @@ class Karma {
     return 1
   }
 }
-
-module.exports = Karma

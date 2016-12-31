@@ -4,5 +4,7 @@ node_js:
 - stable
 - '6'
 - '5'
+after_success:
+- npm run coverage
 notifications:
   email: false
