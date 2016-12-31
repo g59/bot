@@ -2,29 +2,11 @@
 const redis = require('redis')
 const random = require('lodash').random
 
-type Callback = (cnt: number) => void
+type Hook = (cnt: number) => number
 
-const MEMBER = 'KARMASTORE'
-const zadd = (client: redis, key, n, cb: Callback) => {
-  client.zadd([key, n, MEMBER], (err, res) => {
-    if (err) {
-      console.error(err)
-    }
-    cb(res)
-  })
-}
-
-const zincrby = (client: redis, key: string, n: number, cb: Callback) => {
-  client.zincrby([key, n, MEMBER], (err, res) => {
-    if (err) {
-      console.error(err)
-    }
-    cb(res)
-  })
-}
+const KEY = 'KARMASTORE'
 
 module.exports = class Karma {
-  MEMBER: string
   client: redis
   constructor () {
     this.client = redis.createClient(process.env.REDIS_URL)
@@ -34,23 +16,27 @@ module.exports = class Karma {
       }
     })
   }
-  up (key: string, n: number, cb: Callback) {
-    this.client.zscore(key, MEMBER, (err, res) => {
+  up (member: string, n: number, cb: Hook) {
+    this.client.zscore(KEY, member, (err, prev) => {
       if (err) {
-        console.error(err)
+        return console.error(err)
       }
-      console.log(res)
-      if (res) {
-        zincrby(this.client, key, res + n, cb)
-        return
+      if (prev) {
+        return this.client.zincrby(KEY, n, member, (err, res) => {
+          console.error(err, res)
+          cb(res)
+        })
       }
-      zadd(this.client, key, n, cb)
+      return this.client.zadd([KEY, n, member], (err, res) => {
+        console.error('add', err, res)
+        cb(res)
+      })
     })
   }
-  down (key: string, n: number, cb: Callback) {
+  down (key: string, n: number, cb: Hook) {
     this.up(key, n * -1, cb)
   }
-  random (key: string, min: number = 1, max: number = 1, cb: Callback) {
+  random (key: string, min: number = 1, max: number = 1, cb: Hook) {
     this.up(key, random(min, max), cb)
   }
 }

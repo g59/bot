@@ -45,6 +45,6 @@
     "lint:type": "flow",
     "test": "npm-run-all -p test:*",
     "test:lint": "npm run lint",
-    "test:mocha": "cross-env NODE_DEBUG=redis nyc mocha -- test"
+    "test:mocha": "cross-env NODE_ENV=develop nyc mocha -- test"
   }
 }
