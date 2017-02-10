@@ -12,7 +12,7 @@
     "redis": "^2.6.5"
   },
   "devDependencies": {
-    "@9renpoto/eslint-config-flowtype": "^0.0.2",
+    "@9renpoto/eslint-config-flowtype": "^0.1.0",
     "babel-cli": "^6.22.2",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-power-assert": "^1.0.0",
