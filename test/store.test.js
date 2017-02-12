@@ -1,24 +1,13 @@
-const assert = require('assert')
-const random = require('faker').random
+import test from 'ava'
+import { random } from 'faker'
+import Store from '../src/store'
 
-describe('store', () => {
-  const Store = require('../src/store')
-  it('load', () => {
-    assert(Store)
-  })
-
-  it('up', done => {
-    const s = new Store()
-    assert(typeof s.up === 'function')
-    const score = 1
-    const key = random.word()
-    s.up(key, score, d => {
-      assert(d === score)
-    })
-
-    s.up(key, score, d => {
-      assert(d === score * 2)
-      done()
-    })
+test('store up', t => {
+  const s = new Store()
+  t.is(typeof s.up, 'function')
+  const score = 1
+  const key = random.word()
+  s.up(key, score, d => {
+    t.is(d, score)
   })
 })
