@@ -22,9 +22,7 @@ module.exports = class Karma {
       if (err) {
         console.error(err)
       }
-      const rank = []
-
-      cb(rank)
+      cb(res)
     })
   }
   up (key: string, n: number, cb: Hook): void {

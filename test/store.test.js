@@ -17,6 +17,7 @@ test('store', t => {
     t.is(d, score + score)
   })
 
+  key = random.word()
   s.down(key, score, d => {
     t.is(d, score - score)
   })
@@ -24,5 +25,13 @@ test('store', t => {
   key = random.word()
   s.random(key, d => {
     t.true(d > 0)
+  })
+
+  s.top(-1, rank => {
+    t.is(rank.length, 3)
+    rank.forEach(d => {
+      t.true(typeof d.key === 'string')
+      t.true(typeof d.score === 'number')
+    })
   })
 })
