@@ -28,6 +28,8 @@ test('store', t => {
     t.true(d > 0)
   })
 
+  t.is(typeof s._key(), 'string')
+
   s.top(-1, rank => {
     t.is(rank.length, 3)
     rank.forEach(d => {

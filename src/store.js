@@ -48,7 +48,7 @@ module.exports = class Karma {
     return `${this._PREFIX}:${moment().year()}:${parseInt(month / INTERVAL)}`
   }
   clean () {
-    const prev = this._key(moment().subtract('months', 1).month())
+    const prev = this._key(moment().subtract(1, 'months').month())
     this.client.ZREMRANGEBYSCORE(prev, 0, -1)
   }
   top (n: number, cb: (rank: Score[]) => void) {
