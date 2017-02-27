@@ -1,3 +1,4 @@
+/* @flow */
 import test from 'ava'
 import { random } from 'faker'
 import Store from '../src/store'
@@ -27,11 +28,18 @@ test('store', t => {
     t.true(d > 0)
   })
 
+  t.is(typeof s._key(), 'string')
+
   s.top(-1, rank => {
     t.is(rank.length, 3)
     rank.forEach(d => {
       t.true(typeof d.key === 'string')
       t.true(typeof d.score === 'number')
     })
+  })
+
+  s.clean()
+  s.top(-1, rank => {
+    t.is(rank.length, 0)
   })
 })
