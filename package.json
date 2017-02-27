@@ -1,6 +1,6 @@
 {
   "name": "karma-store",
-  "description": "karma-store expired based",
+  "description": "simple karma-store",
   "version": "0.0.1",
   "author": "@9renpoto",
   "ava": {
@@ -12,40 +12,49 @@
     "url": "https://github.com/9renpoto/karma-store/pulls"
   },
   "dependencies": {
+    "cron": "^1.2.1",
     "lodash": "^4.17.4",
-    "moment": "^2.17.0",
+    "moment": "^2.17.1",
+    "raven": "^1.1.2",
     "redis": "^2.6.5"
   },
   "devDependencies": {
     "@9renpoto/eslint-config-flowtype": "^0.1.1",
     "ava": "^0.18.1",
     "babel-cli": "^6.23.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "babel-preset-flow": "^6.23.0",
     "codecov": "^1.0.1",
     "eslint": "^3.15.0",
     "eslint-plugin-ava": "^4.2.0",
     "faker": "^3.1.0",
     "flow-bin": "^0.39.0",
     "npm-run-all": "^4.0.1",
-    "nyc": "^10.1.2"
+    "nyc": "^10.1.2",
+    "rimraf": "^2.6.1"
   },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/9renpoto/karma-store#readme",
   "keywords": [
     "karma",
     "redis"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "lib/store.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/9renpoto/karma-store.git"
   },
   "scripts": {
-    "build": "babel src -d dist",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "build": "babel src -d lib && flow gen-flow-files src --out-dir lib",
+    "clean": "rimraf lib coverage .nyc_output",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN",
     "lint": "npm-run-all -p lint:*",
     "lint:es": "eslint . --cache",
     "lint:type": "flow",
+    "prebuild": "npm run clean",
     "test": "npm-run-all -p test:*",
     "test:ava": "nyc ava",
     "test:lint": "npm run lint"

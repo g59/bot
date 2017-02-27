@@ -1,34 +1,68 @@
 /* @flow */
-const redis = require('redis')
-const random = require('lodash').random
+import redis, { createClient } from 'redis'
+import { random } from 'lodash'
+import Raven from 'raven'
+import { CronJob } from 'cron'
+import moment from 'moment'
+
+import {
+  RAVEN_DSN,
+  REDIS_URL,
+  TIMEZONE,
+  INTERVAL
+} from './const'
 
 type Hook = (cnt: number) => void
 type Score = { key: string, score: number }
 
 module.exports = class Karma {
-  SET: string
+  _SET: string
+  _PREFIX: string
   client: redis
-  constructor (name: string) {
-    this.SET = name
-    this.client = redis.createClient(process.env.REDIS_URL)
+  constructor (PREFIX: string) {
+    this._PREFIX = PREFIX
+    this._SET = this._key()
+
+    if (RAVEN_DSN) {
+      Raven.config(RAVEN_DSN).install()
+    }
+
+    this.client = createClient(REDIS_URL)
     this.client.on('error', err => {
       if (err) {
         throw err
       }
     })
+
+    const cron = new CronJob({
+      cronTime: `00 25 04 01 */${INTERVAL} *`,
+      onTick: () => {
+        this.clean()
+      },
+      start: false,
+      timeZone: TIMEZONE
+    })
+    cron.start()
+  }
+  _key (month: number = moment().month()) {
+    return `${this._PREFIX}:${moment().year()}:${parseInt(month / INTERVAL)}`
+  }
+  clean () {
+    const prev = this._key(moment().subtract('months', 1).month())
+    this.client.ZREMRANGEBYSCORE(prev, 0, -1)
   }
   top (n: number, cb: (rank: Score[]) => void) {
-    this.client.zrange(this.SET, 0, n, 'WITHSCORES', (err, res) => {
+    this.client.zrange(this._SET, 0, n, 'WITHSCORES', (err, res) => {
       if (err) {
-        console.error(err)
+        Raven.captureException(err)
       }
       cb(res)
     })
   }
   up (key: string, n: number, cb: Hook): void {
-    this.client.zincrby(this.SET, n, key, (err, res) => {
+    this.client.zincrby(this._SET, n, key, (err, res) => {
       if (err) {
-        console.error(err)
+        Raven.captureException(err)
       }
       cb(res)
     })
