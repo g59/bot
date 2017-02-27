@@ -1,11 +1,9 @@
 # karma-store
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/9renpoto/karma-store.svg)](https://greenkeeper.io/)
-
 Karma Store
 
 [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
- [![Dependency Status][daviddm-image]][daviddm-url] [![devDependency Status][dev-daviddm-image]][dev-daviddm-url]
+ [![Dependency Status][daviddm-image]][daviddm-url] [![devDependency Status][dev-daviddm-image]][dev-daviddm-url] [![Greenkeeper badge](https://badges.greenkeeper.io/9renpoto/karma-store.svg)](https://greenkeeper.io/)
 
 ## Install
 
