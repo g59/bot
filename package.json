@@ -1,8 +1,8 @@
 {
-  "name": "karma-store",
+  "name": "karma-store-redis",
   "description": "simple karma-store",
   "version": "0.0.1",
-  "author": "@9renpoto",
+  "author": "Keisuke Kan <@9renpoto>",
   "ava": {
     "require": [
       "babel-register"
