@@ -33,15 +33,17 @@ test.cb('++ & --', t => {
     t.is(d, (score1).toString())
   })
 
-  s.random(key, d => {
-    t.true(parseInt(d, 10) >= score1)
+  s.random(random.alphaNumeric(), d => {
+    t.is(parseInt(d, 10), 1)
   })
 
   s.top(-1, rank => {
-    t.is(rank.length, 2)
-    rank.forEach(d => {
-      t.true(typeof d === 'string')
-    })
+    t.is(rank.length, 4)
+    const max = parseInt(rank[1], 10)
+    for (let i = 0; i < rank.length; i += 2) {
+      t.true(typeof rank[i] === 'string')
+      t.true(parseInt(rank[i + 1], 10) <= max)
+    }
     t.end()
   })
 })
