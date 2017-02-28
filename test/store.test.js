@@ -38,7 +38,7 @@ test('store', t => {
     })
   })
 
-  s.clean()
+  s.clearAll(s._key())
   s.top(-1, rank => {
     t.is(rank.length, 0)
   })

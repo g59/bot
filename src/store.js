@@ -15,7 +15,7 @@ import {
 type Hook = (cnt: number) => void
 type Score = { key: string, score: number }
 
-module.exports = class Karma {
+export default class Karma {
   _SET: string
   _PREFIX: string
   client: redis
@@ -37,7 +37,11 @@ module.exports = class Karma {
     const cron = new CronJob({
       cronTime: `00 25 04 01 */${INTERVAL} *`,
       onTick: () => {
-        this.clean()
+        const prev = this._key(moment().subtract(1, 'months').month())
+        if (prev === this._SET) {
+          return
+        }
+        this.clearAll(prev)
       },
       start: false,
       timeZone: TIMEZONE
@@ -47,9 +51,8 @@ module.exports = class Karma {
   _key (month: number = moment().month()) {
     return `${this._PREFIX}:${moment().year()}:${parseInt(month / INTERVAL)}`
   }
-  clean () {
-    const prev = this._key(moment().subtract(1, 'months').month())
-    this.client.ZREMRANGEBYSCORE(prev, 0, -1)
+  clearAll (key: string) {
+    this.client.ZREMRANGEBYSCORE(key, 0, -1)
   }
   top (n: number, cb: (rank: Score[]) => void) {
     this.client.zrange(this._SET, 0, n, 'WITHSCORES', (err, res) => {
