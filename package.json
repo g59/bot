@@ -28,7 +28,7 @@
     "eslint": "^3.15.0",
     "eslint-plugin-ava": "^4.2.0",
     "faker": "^4.0.0",
-    "flow-bin": "^0.39.0",
+    "flow-bin": "^0.40.0",
     "npm-run-all": "^4.0.1",
     "nyc": "^10.1.2",
     "rimraf": "^2.6.1"
@@ -48,7 +48,7 @@
     "url": "git+ssh://git@github.com/9renpoto/karma-store.git"
   },
   "scripts": {
-    "build": "babel src -d lib && flow gen-flow-files src --out-dir lib",
+    "build": "babel src -d lib",
     "clean": "rimraf lib coverage .nyc_output",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN",
     "lint": "npm-run-all -p lint:*",
