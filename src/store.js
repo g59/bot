@@ -55,7 +55,7 @@ export default class Karma {
     this.client.ZREMRANGEBYSCORE(key, 0, -1)
   }
   top (n: number, cb: (rank: Score[]) => void) {
-    this.client.zrange(this._SET, 0, n, 'WITHSCORES', (err, res) => {
+    this.client.zrevrange(this._SET, 0, n, 'WITHSCORES', (err, res) => {
       if (err) {
         Raven.captureException(err)
       }

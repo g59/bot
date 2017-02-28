@@ -3,43 +3,47 @@ import test from 'ava'
 import { random } from 'faker'
 import Store from '../src/store'
 
-test('store', t => {
-  const s = new Store(random.word())
-  t.is(typeof s.up, 'function')
+const s = new Store(random.alphaNumeric())
 
-  const score = random.number()
-
-  let key = random.word()
-  s.up(key, score, d => {
-    t.is(d, score)
-  })
-
-  s.up(key, score, d => {
-    t.is(d, score + score)
-  })
-
-  key = random.word()
-  s.down(key, score, d => {
-    t.is(d, score - score)
-  })
-
-  key = random.word()
-  s.random(key, d => {
-    t.true(d > 0)
-  })
-
+test.afterEach(t => {
   t.is(typeof s._key(), 'string')
-
-  s.top(-1, rank => {
-    t.is(rank.length, 3)
-    rank.forEach(d => {
-      t.true(typeof d.key === 'string')
-      t.true(typeof d.score === 'number')
-    })
-  })
-
   s.clearAll(s._key())
+})
+
+test.cb('after clear', t => {
   s.top(-1, rank => {
     t.is(rank.length, 0)
+    t.end()
+  })
+})
+
+test.cb('++ & --', t => {
+  const key = random.alphaNumeric()
+  const score1 = random.number({max: 10})
+  s.up(key, score1, d => {
+    t.is(d, score1.toString())
+  })
+
+  const score2 = random.number({min: 0, max: 10})
+  s.up(key, score2, d => {
+    t.is(d, (score1 + score2).toString())
+  })
+
+  s.down(key, score2, d => {
+    t.is(d, (score1).toString())
+  })
+
+  s.random(random.alphaNumeric(), d => {
+    t.is(parseInt(d, 10), 1)
+  })
+
+  s.top(-1, rank => {
+    t.is(rank.length, 4)
+    const max = parseInt(rank[1], 10)
+    for (let i = 0; i < rank.length; i += 2) {
+      t.true(typeof rank[i] === 'string')
+      t.true(parseInt(rank[i + 1], 10) <= max)
+    }
+    t.end()
   })
 })
