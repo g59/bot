@@ -24,7 +24,7 @@
     "babel-cli": "^6.23.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
     "babel-preset-flow": "^6.23.0",
-    "codecov": "^2.0.1",
+    "codecov": "^2.0.2",
     "eslint": "^3.15.0",
     "eslint-plugin-ava": "^4.2.0",
     "faker": "^4.0.0",
