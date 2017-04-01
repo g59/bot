@@ -16,12 +16,10 @@ type Hook = (cnt: number) => void
 type Score = { key: string, score: number }
 
 export default class Karma {
-  _SET: string
   _PREFIX: string
   client: redis
   constructor (PREFIX: string) {
     this._PREFIX = PREFIX
-    this._SET = this._key()
 
     if (RAVEN_DSN) {
       Raven.config(RAVEN_DSN).install()
@@ -55,7 +53,7 @@ export default class Karma {
     this.client.ZREMRANGEBYSCORE(key, 0, -1)
   }
   top (n: number, cb: (rank: Score[]) => void) {
-    this.client.zrevrange(this._SET, 0, n, 'WITHSCORES', (err, res) => {
+    this.client.zrevrange(this._key(), 0, n, 'WITHSCORES', (err, res) => {
       if (err) {
         Raven.captureException(err)
       }
@@ -63,7 +61,7 @@ export default class Karma {
     })
   }
   up (key: string, n: number, cb: Hook): void {
-    this.client.zincrby(this._SET, n, key, (err, res) => {
+    this.client.zincrby(this._key(), n, key, (err, res) => {
       if (err) {
         Raven.captureException(err)
       }
