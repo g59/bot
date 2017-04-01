@@ -1,7 +1,7 @@
 {
   "name": "karma-store-redis",
   "description": "simple karma-store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Keisuke Kan <@9renpoto>",
   "ava": {
     "require": [
@@ -15,22 +15,22 @@
     "cron": "^1.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "raven": "^1.1.2",
+    "raven": "^1.2.0",
     "redis": "^2.7.1"
   },
   "devDependencies": {
     "@9renpoto/eslint-config-flowtype": "^0.1.1",
-    "ava": "^0.18.1",
-    "babel-cli": "^6.23.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "ava": "^0.18.2",
+    "babel-cli": "^6.24.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
     "babel-preset-flow": "^6.23.0",
     "codecov": "^2.0.2",
-    "eslint": "^3.15.0",
+    "eslint": "^3.19.0",
     "eslint-plugin-ava": "^4.2.0",
     "faker": "^4.0.0",
     "flow-bin": "^0.42.0",
-    "npm-run-all": "^4.0.1",
-    "nyc": "^10.1.2",
+    "npm-run-all": "^4.0.2",
+    "nyc": "^10.2.0",
     "rimraf": "^2.6.1"
   },
   "files": [
