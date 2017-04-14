@@ -28,7 +28,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-ava": "^4.2.0",
     "faker": "^4.0.0",
-    "flow-bin": "^0.43.0",
+    "flow-bin": "^0.44.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^10.2.0",
     "rimraf": "^2.6.1"
