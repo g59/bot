@@ -5,19 +5,14 @@ import Raven from 'raven'
 import { CronJob } from 'cron'
 import moment from 'moment'
 
-import {
-  RAVEN_DSN,
-  REDIS_URL,
-  TIMEZONE,
-  INTERVAL
-} from './const'
+import { RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL } from './const'
 
-type Hook = (cnt: number) => void
-type Score = { key: string, score: number }
+type Hook = (cnt: number) => void;
+type Score = { key: string, score: number };
 
 export default class Karma {
-  _PREFIX: string
-  client: redis
+  _PREFIX: string;
+  client: redis;
   constructor (PREFIX: string) {
     this._PREFIX = PREFIX
 
