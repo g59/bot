@@ -25,7 +25,7 @@
     "babel-preset-env": "^1.4.0",
     "babel-preset-flow": "^6.23.0",
     "codecov": "^2.0.2",
-    "cross-env": "^4.0.0",
+    "cross-env": "^5.0.0",
     "eslint": "^3.19.0",
     "eslint-plugin-ava": "^4.2.0",
     "faker": "^4.0.0",
