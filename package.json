@@ -17,6 +17,7 @@
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-flow": "^6.23.0",
+    "babel-register": "^6.24.1",
     "cross-env": "^5.0.0",
     "documentation": "^4.0.0-rc.1",
     "eslint": "^3.19.0",
@@ -28,6 +29,9 @@
   "engines": {
     "node": ">=7.10"
   },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/9renpoto/slack-channel-active-reminder#readme",
   "keywords": [
     "slack"
@@ -39,8 +43,9 @@
     "url": "git+ssh://git@github.com/9renpoto/slack-channel-active-reminder.git"
   },
   "scripts": {
-    "build": "npm-run-all -p build:*",
+    "build": "mkdir -p docs lib && npm-run-all -p build:*",
     "build:doc": "documentation build src/** -f html -o docs",
+    "build:flow": "flow gen-flow-files src --out-dir lib",
     "build:js": "cross-env NODE_ENV=production babel src -d lib",
     "clean": "rimraf docs lib",
     "lint": "npm-run-all -p lint:*",
@@ -51,6 +56,7 @@
     "prebuild": "npm run clean",
     "prepublish": "npm run build",
     "prestart": "npm run build",
+    "pretest": "npm run build",
     "start": "node lib/index.js",
     "test": "npm-run-all -p test:*",
     "test:lint": "npm run lint"

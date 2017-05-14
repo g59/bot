@@ -11,6 +11,7 @@ const defaultOptions = {
   title: 'Please archive this channel'
 }
 
+/** class */
 export default class ActiveReminder {
   _web: WebClient
   _MAX_DATES: number
