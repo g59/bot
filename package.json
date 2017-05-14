@@ -1,5 +1,6 @@
 {
   "name": "slack-channel-active-reminder",
+  "description": "remind non acctive channel at slack",
   "version": "0.0.1",
   "author": "github.com/9renpoto",
   "bugs": {
@@ -23,6 +24,9 @@
     "ghpages": "^0.0.10",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1"
+  },
+  "engines": {
+    "node": ">=7.10"
   },
   "homepage": "https://github.com/9renpoto/slack-channel-active-reminder#readme",
   "keywords": [
