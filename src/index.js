@@ -13,15 +13,21 @@ const defaultOptions = {
 
 export default class ActiveReminder {
   _web: WebClient
-  _options: any
+  _MAX_DATES: number
+  _POST_OPTIONS: any
   _attachments: any
-  constructor (postOptions: any = {}, attachments: any = {}) {
+  constructor (MAX_DATES: number = 14, POST_OPTIONS: any = {}, attachments: any = {}) {
     const token = process.env.SLACK_API_TOKEN || config.get('slack.API_TOKEN')
     this._web = new WebClient(token)
-    this._options = postOptions
+    this._MAX_DATES = MAX_DATES
+    this._POST_OPTIONS = POST_OPTIONS
     this._attachments = attachments
   }
-  async fetchChannelsList () {
+  /**
+   * post remind message
+   * @return {Promise} channels.history
+   */
+  async postRemindMessage () {
     const {channels} = await this._web.channels.list({
       exclude_archived: true
     })
@@ -29,15 +35,25 @@ export default class ActiveReminder {
       this.checkLastMessage(id)
     })
   }
+  /**
+   * check last message timestamp
+   * @param  {string}  id channel.id
+   * @return {Promise}    chat.postMessage
+   */
   async checkLastMessage (id: string) {
     const {messages} = await this._web.channels.history(id, {count: 1})
     const last = moment.unix(messages[0].ts)
-    if (moment().subtract(14, 'days').isAfter(last)) {
-      this.post(id)
+    if (moment().subtract(this._MAX_DATES, 'days').isAfter(last)) {
+      this.postMessage(id)
     }
   }
-  async post (id: string) {
-    const options = Object.assign({}, defaultOptions, this._options)
+  /**
+   * post slack messages
+   * @param  {string}  id channel.id
+   * @return {Promise}    chat.postMessage
+   */
+  async postMessage (id: string) {
+    const options = Object.assign({}, defaultOptions, this._POST_OPTIONS)
     await this._web.chat.postMessage(
       id,
       '',
