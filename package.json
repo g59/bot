@@ -1,5 +1,6 @@
 {
   "name": "slack-channel-active-reminder",
+  "description": "remind non acctive channel at slack",
   "version": "0.0.1",
   "author": "github.com/9renpoto",
   "bugs": {
@@ -16,11 +17,21 @@
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-flow": "^6.23.0",
+    "babel-register": "^6.24.1",
     "cross-env": "^5.0.0",
+    "documentation": "^4.0.0-rc.1",
     "eslint": "^3.19.0",
     "flow-bin": "^0.46.0",
-    "npm-run-all": "^4.0.2"
+    "ghpages": "^0.0.10",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1"
   },
+  "engines": {
+    "node": ">=7.10"
+  },
+  "files": [
+    "lib"
+  ],
   "homepage": "https://github.com/9renpoto/slack-channel-active-reminder#readme",
   "keywords": [
     "slack"
@@ -32,12 +43,21 @@
     "url": "git+ssh://git@github.com/9renpoto/slack-channel-active-reminder.git"
   },
   "scripts": {
-    "start": "node lib/index.js",
-    "prestart": "npm run build",
-    "build": "cross-env NODE_ENV=production babel src -d lib",
+    "build": "mkdir -p docs lib && npm-run-all -p build:*",
+    "build:doc": "documentation build src/** -f html -o docs",
+    "build:flow": "flow gen-flow-files src --out-dir lib",
+    "build:js": "cross-env NODE_ENV=production babel src -d lib",
+    "clean": "rimraf docs lib",
     "lint": "npm-run-all -p lint:*",
+    "lint:documentation": "documentation lint src",
     "lint:es": "eslint . --cache",
     "lint:flow": "flow",
+    "postpublish": "ghpages --path docs",
+    "prebuild": "npm run clean",
+    "prepublish": "npm run build",
+    "prestart": "npm run build",
+    "pretest": "npm run build",
+    "start": "node lib/index.js",
     "test": "npm-run-all -p test:*",
     "test:lint": "npm run lint"
   }
