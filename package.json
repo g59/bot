@@ -1,7 +1,7 @@
 {
   "name": "slack-channel-active-reminder",
   "description": "remind non acctive channel at slack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "github.com/9renpoto",
   "bugs": {
     "url": "https://github.com/9renpoto/slack-channel-active-reminder/issues"
@@ -45,7 +45,6 @@
   "scripts": {
     "build": "mkdir -p docs lib && npm-run-all -p build:*",
     "build:doc": "documentation build src/** -f html -o docs",
-    "build:flow": "flow gen-flow-files src --out-dir lib",
     "build:js": "cross-env NODE_ENV=production babel src -d lib",
     "clean": "rimraf docs lib",
     "lint": "npm-run-all -p lint:*",
