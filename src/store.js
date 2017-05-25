@@ -1,18 +1,18 @@
 /* @flow */
-import redis, { createClient } from 'redis'
-import { random } from 'lodash'
+import redis, {createClient} from 'redis'
+import {random} from 'lodash'
 import Raven from 'raven'
-import { CronJob } from 'cron'
+import {CronJob} from 'cron'
 import moment from 'moment'
 
-import { RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL } from './const'
+import {RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL} from './const'
 
-type Hook = (cnt: number) => void;
-type Score = { key: string, score: number };
+type Hook = (cnt: number) => void
+type Score = {key: string, score: number}
 
 export default class Karma {
-  _PREFIX: string;
-  client: redis;
+  _PREFIX: string
+  client: redis
   constructor (PREFIX: string) {
     this._PREFIX = PREFIX
 
@@ -49,6 +49,14 @@ export default class Karma {
   }
   top (n: number, cb: (rank: Score[]) => void) {
     this.client.zrevrange(this._key(), 0, n, 'WITHSCORES', (err, res) => {
+      if (err) {
+        Raven.captureException(err)
+      }
+      cb(res)
+    })
+  }
+  lowest (n: number, cb: (rank: Score[]) => void) {
+    this.client.zrange(this._key(), 0, n, 'WITHSCORES', (err, res) => {
       if (err) {
         Raven.captureException(err)
       }
