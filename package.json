@@ -1,7 +1,7 @@
 {
   "name": "karma-store-redis",
   "description": "simple karma-store",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "Keisuke Kan <@9renpoto>",
   "ava": {
     "require": [
