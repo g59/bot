@@ -3,6 +3,10 @@ coverage:
   round: down
   range: "90...100"
 
+codecov:
+  notify:
+    require_ci_to_pass: yes
+
 comment:
   layout: "header, diff, changes, sunburst, uncovered, tree"
   behavior: default
