@@ -34,7 +34,7 @@
     "lint-staged": "^3.6.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.2",
-    "prettier-eslint-cli": "^4.0.4",
+    "prettier-eslint-cli": "^4.1.1",
     "rimraf": "^2.6.1"
   },
   "files": [
