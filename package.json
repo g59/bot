@@ -21,7 +21,7 @@
     "cross-env": "^5.0.0",
     "documentation": "^4.0.0-rc.1",
     "eslint": "^4.0.0",
-    "flow-bin": "^0.48.0",
+    "flow-bin": "^0.49.1",
     "ghpages": "^0.0.10",
     "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1"
