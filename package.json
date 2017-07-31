@@ -7,7 +7,7 @@
     "url": "https://github.com/9renpoto/slack-channel-active-reminder/issues"
   },
   "dependencies": {
-    "@slack/client": "^3.9.0",
+    "@slack/client": "^3.10.0",
     "config": "^1.26.1",
     "moment": "^2.18.1"
   },
@@ -15,15 +15,18 @@
     "@9renpoto/eslint-config-flowtype": "^0.3.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.4.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.24.1",
-    "cross-env": "^5.0.0",
-    "documentation": "^4.0.0-rc.1",
-    "eslint": "^4.0.0",
+    "cross-env": "^5.0.1",
+    "documentation": "^5.0.1",
+    "eslint": "^4.3.0",
     "flow-bin": "^0.51.0",
     "ghpages": "^0.0.10",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.2",
     "npm-run-all": "^4.0.2",
+    "prettier-eslint-cli": "^4.1.1",
     "rimraf": "^2.6.1"
   },
   "engines": {
@@ -37,27 +40,35 @@
     "slack"
   ],
   "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "eslint --cache",
+      "git add"
+    ]
+  },
   "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/9renpoto/slack-channel-active-reminder.git"
   },
   "scripts": {
-    "build": "mkdir -p docs lib && npm-run-all -p build:*",
+    "build": "mkdir -p docs lib && run-p build:*",
     "build:doc": "documentation build src/** -f html -o docs",
     "build:js": "cross-env NODE_ENV=production babel src -d lib",
     "clean": "rimraf docs lib",
-    "lint": "npm-run-all -p lint:*",
+    "lint": "run-p lint:*",
     "lint:documentation": "documentation lint src",
     "lint:es": "eslint . --cache",
     "lint:flow": "flow",
     "postpublish": "ghpages --path docs",
     "prebuild": "npm run clean",
+    "precommit": "lint-staged",
     "prepublish": "npm run build",
     "prestart": "npm run build",
     "pretest": "npm run build",
     "start": "node lib/index.js",
-    "test": "npm-run-all -p test:*",
+    "test": "run-p test:*",
     "test:lint": "npm run lint"
   }
 }
