@@ -7,26 +7,26 @@
     "url": "https://github.com/9renpoto/slack-channel-active-reminder/issues"
   },
   "dependencies": {
-    "@slack/client": "^3.10.0",
-    "config": "^1.26.1",
+    "@slack/client": "^3.11.0",
+    "config": "^1.26.2",
     "moment": "^2.18.1"
   },
   "devDependencies": {
     "@9renpoto/eslint-config-flowtype": "^0.4.0",
     "babel": "^6.23.0",
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
-    "babel-register": "^6.24.1",
-    "cross-env": "^5.0.1",
-    "documentation": "^5.0.1",
-    "eslint": "^4.3.0",
+    "babel-register": "^6.26.0",
+    "cross-env": "^5.0.5",
+    "documentation": "^5.2.1",
+    "eslint": "^4.4.1",
     "flow-bin": "^0.53.0",
     "ghpages": "^0.0.10",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.2",
+    "lint-staged": "^4.0.3",
     "npm-run-all": "^4.0.2",
-    "prettier-eslint-cli": "^4.1.1",
+    "prettier-eslint-cli": "^4.2.0",
     "rimraf": "^2.6.1"
   },
   "engines": {
