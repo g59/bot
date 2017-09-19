@@ -1,14 +1,14 @@
 /* @flow */
-import redis, {createClient} from 'redis'
-import {random} from 'lodash'
+import redis, { createClient } from 'redis'
+import { random } from 'lodash'
 import Raven from 'raven'
-import {CronJob} from 'cron'
+import { CronJob } from 'cron'
 import moment from 'moment'
 
-import {RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL} from './const'
+import { RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL } from './const'
 
 type Hook = (cnt: number) => void
-type Score = {key: string, score: number}
+type Score = { key: string, score: number }
 
 export default class Karma {
   _PREFIX: string
@@ -42,7 +42,10 @@ export default class Karma {
     cron.start()
   }
   _key (month: number = moment().month()) {
-    return `${this._PREFIX}:${moment().year()}:${parseInt(month / INTERVAL)}`
+    return `${this._PREFIX}:${moment().year()}:${parseInt(
+      month / INTERVAL,
+      10
+    )}`
   }
   clearAll (key: string) {
     this.client.ZREMRANGEBYSCORE(key, 0, -1)

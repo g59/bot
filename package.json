@@ -19,23 +19,26 @@
     "redis": "^2.7.1"
   },
   "devDependencies": {
-    "@9renpoto/eslint-config-flowtype": "^0.6.0",
+    "@9renpoto/eslint-config": "^2.3.0",
+    "@9renpoto/tslint-config": "^3.2.0",
+    "@types/cron": "^1.2.1",
+    "@types/faker": "^4.1.1",
+    "@types/moment": "^2.13.0",
+    "@types/redis": "^2.6.0",
     "ava": "^0.22.0",
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-flow": "^6.23.0",
     "codecov": "^2.2.0",
     "cross-env": "^5.0.1",
     "eslint": "^4.3.0",
     "eslint-plugin-ava": "^4.2.1",
     "faker": "^4.1.0",
-    "flow-bin": "^0.54.0",
     "husky": "^0.14.0",
     "lint-staged": "^4.0.2",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.1.0",
     "prettier-eslint-cli": "^4.1.1",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2"
   },
   "files": [
     "lib"
@@ -47,9 +50,9 @@
   ],
   "license": "MIT",
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.ts": [
       "prettier-eslint --write",
-      "eslint",
+      "tslint --fix",
       "git add"
     ]
   },
@@ -59,12 +62,13 @@
     "url": "git+ssh://git@github.com/9renpoto/karma-store.git"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production babel src -d lib",
+    "build": "cross-env NODE_ENV=production tsc",
     "clean": "rimraf lib coverage .nyc_output",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache",
-    "lint:type": "flow",
+    "lint:src": "tslint src/**/*.ts",
+    "lint:test": "tslint test/**/*.ts",
     "prebuild": "npm run clean",
     "precommit": "lint-staged",
     "prepublish": "npm run build",
