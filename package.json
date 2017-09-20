@@ -21,7 +21,7 @@
     "cross-env": "^5.0.5",
     "documentation": "^5.2.1",
     "eslint": "^4.4.1",
-    "flow-bin": "^0.54.0",
+    "flow-bin": "^0.55.0",
     "ghpages": "^0.0.10",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.3",
