@@ -1,58 +1,63 @@
-import test from 'ava'
+import 'mocha'
 import { random } from 'faker'
+import assert from 'assert'
+
 import * as Store from '../src/store'
 
 const s = new Store(random.alphaNumeric())
 
-test.afterEach(t => {
-  t.is(typeof s._key(), 'string')
-  s.clearAll(s._key())
-})
-
-test.cb('after clear', t => {
-  s.top(-1, rank => {
-    t.is(rank.length, 0)
-    t.end()
-  })
-})
-
-test.cb('++ & --', t => {
-  const key = random.alphaNumeric()
-  const score1 = random.number({ max: 10 })
-  s.up(key, score1, d => {
-    t.is(d, score1.toString())
+describe('', () => {
+  afterEach(() => {
+    assert(typeof s._key() === 'string')
+    s.clearAll(s._key())
   })
 
-  const score2 = random.number({ min: 0, max: 10 })
-  s.up(key, score2, d => {
-    t.is(d, (score1 + score2).toString())
+  it('after clear', () => {
+    return s.top(-1, (rank: any) => {
+      assert(rank.length === 0)
+    })
   })
 
-  s.down(key, score2, d => {
-    t.is(d, score1.toString())
-  })
+  it('++ & --', done => {
+    const key = random.alphaNumeric()
+    const score1 = random.number({ max: 10 })
+    s.up(key, score1, (d: any) => {
+      assert(d === score1.toString())
+      done()
+    })
 
-  s.random(random.alphaNumeric(), d => {
-    t.is(parseInt(d, 10), 1)
-  })
+    const score2 = random.number({ min: 0, max: 10 })
+    s.up(key, score2, (d: any) => {
+      assert(d === (score1 + score2).toString())
+      done()
+    })
 
-  s.top(-1, rank => {
-    t.is(rank.length, 4)
-    const max = parseInt(rank[1], 10)
-    for (let i = 0; i < rank.length; i += 2) {
-      t.true(typeof rank[i] === 'string')
-      t.true(parseInt(rank[i + 1], 10) <= max)
-    }
-    t.end()
-  })
+    s.down(key, score2, (d: any) => {
+      assert(d === score1.toString())
+    })
 
-  s.lowest(-1, rank => {
-    t.is(rank.length, 4)
-    const min = parseInt(rank[1], 10)
-    for (let i = 0; i < rank.length; i += 2) {
-      t.true(typeof rank[i] === 'string')
-      t.true(parseInt(rank[i + 1], 10) >= min)
-    }
-    t.end()
+    s.random(random.alphaNumeric(), (d: any) => {
+      assert(parseInt(d, 10) === 1)
+    })
+
+    s.top(-1, rank => {
+      assert(rank.length === 4)
+      const max = parseInt(rank[1], 10)
+      for (let i = 0; i < rank.length; i += 2) {
+        assert(typeof rank[i] === 'string')
+        assert(parseInt(rank[i + 1], 10) <= max)
+      }
+      done()
+    })
+
+    s.lowest(-1, rank => {
+      assert(rank.length === 4)
+      const min = parseInt(rank[1], 10)
+      for (let i = 0; i < rank.length; i += 2) {
+        assert(typeof rank[i] === 'string')
+        assert(parseInt(rank[i + 1], 10) >= min)
+      }
+      done()
+    })
   })
 })

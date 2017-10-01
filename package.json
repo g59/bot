@@ -3,11 +3,6 @@
   "description": "simple karma-store",
   "version": "0.2.0",
   "author": "Keisuke Kan <@9renpoto>",
-  "ava": {
-    "require": [
-      "babel-register"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/9renpoto/karma-store/pulls"
   },
@@ -20,25 +15,31 @@
   },
   "devDependencies": {
     "@9renpoto/eslint-config": "^2.3.0",
-    "@9renpoto/tslint-config": "^3.2.0",
     "@types/cron": "^1.2.1",
     "@types/faker": "^4.1.1",
+    "@types/lodash": "^4.14.76",
+    "@types/mocha": "^2.2.43",
     "@types/moment": "^2.13.0",
+    "@types/node": "^8.0.31",
+    "@types/power-assert": "^1.4.29",
+    "@types/raven": "^2.1.2",
     "@types/redis": "^2.6.0",
-    "ava": "^0.22.0",
     "codecov": "^2.2.0",
     "cross-env": "^5.0.1",
     "eslint": "^4.3.0",
-    "eslint-plugin-ava": "^4.2.1",
     "faker": "^4.1.0",
     "husky": "^0.14.0",
+    "intelli-espower-loader": "^1.0.1",
     "lint-staged": "^4.0.2",
-    "npm-run-all": "^4.0.2",
-    "nyc": "^11.1.0",
+    "mocha": "^3.5.3",
+    "nyc": "^11.2.1",
+    "power-assert": "^1.4.4",
     "prettier-eslint-cli": "^4.1.1",
     "rimraf": "^2.6.1",
+    "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2"
+    "typescript": "^2.5.2",
+    "typescript-eslint-parser": "^8.0.0"
   },
   "files": [
     "lib"
@@ -51,8 +52,8 @@
   "license": "MIT",
   "lint-staged": {
     "*.ts": [
-      "prettier-eslint --write",
-      "tslint --fix",
+      "prettier-eslint --parser typescript --write",
+      "eslint --fix",
       "git add"
     ]
   },
@@ -65,13 +66,10 @@
     "build": "cross-env NODE_ENV=production tsc",
     "clean": "rimraf lib coverage .nyc_output",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN",
-    "lint": "run-p lint:*",
-    "lint:es": "eslint . --cache",
-    "lint:src": "tslint src/**/*.ts",
-    "lint:test": "tslint test/**/*.ts",
+    "lint": "eslint . --cache --ext=ts",
     "prebuild": "npm run clean",
     "precommit": "lint-staged",
     "prepublish": "npm run build",
-    "test": "nyc ava"
+    "test": "nyc mocha -- test"
   }
 }

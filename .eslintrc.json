@@ -1,4 +1,10 @@
 {
-  "extends": ["plugin:ava/recommended", "@9renpoto/eslint-config"],
-  "plugins": ["ava"]
+  "extends": ["@9renpoto/eslint-config"],
+  "parser": "typescript-eslint-parser",
+  "rules": {
+     "no-undef": 1
+  },
+  "env": {
+    "mocha": true
+  }
 }
