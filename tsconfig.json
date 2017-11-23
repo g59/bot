@@ -1,15 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
-    "lib": [],
-    "allowJs": true,
-    "checkJs": true,
     "declaration": true,
     "sourceMap": true,
     "outDir": "./lib",
     "removeComments": true,
-    "noEmit": true,
     "importHelpers": true,
     "downlevelIteration": true,
     "strict": true,
@@ -22,13 +18,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {},
-    "rootDirs": [],
-    "typeRoots": [],
-    "types": [],
     "allowSyntheticDefaultImports": true,
-    "inlineSources": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   }
