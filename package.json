@@ -33,7 +33,7 @@
     "mocha": "^4.0.1",
     "nyc": "^11.3.0",
     "power-assert": "^1.4.4",
-    "prettier-eslint-cli": "^4.4.0",
+    "prettier-eslint-cli": "^4.4.2",
     "rimraf": "^2.6.2",
     "ts-node": "^4.0.1",
     "typescript": "^2.6.1",
