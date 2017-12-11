@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@slack/client": "^3.14.2",
-    "config": "^1.26.2",
+    "config": "^1.28.1",
     "moment": "^2.18.1"
   },
   "devDependencies": {
