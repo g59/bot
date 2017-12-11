@@ -27,7 +27,7 @@
     "lint-staged": "^6.0.0",
     "npm-run-all": "^4.0.2",
     "prettier-eslint-cli": "^4.2.0",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.2"
   },
   "engines": {
     "node": ">=7.10"
