@@ -7,7 +7,7 @@
     "url": "https://github.com/9renpoto/slack-channel-active-reminder/issues"
   },
   "dependencies": {
-    "@slack/client": "^3.11.0",
+    "@slack/client": "^3.14.2",
     "config": "^1.26.2",
     "moment": "^2.18.1"
   },
