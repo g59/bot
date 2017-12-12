@@ -29,6 +29,10 @@
   version "1.2.30"
   resolved "https://registry.yarnpkg.com/@types/empower/-/empower-1.2.30.tgz#c7cfc14b3a61e54c74c674c1fbc91ba2df0d1392"
 
+"@types/events@*":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.1.0.tgz#93b1be91f63c184450385272c47b6496fd028e02"
+
 "@types/faker@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@types/faker/-/faker-4.1.2.tgz#f8ab50c9f9af68c160dd71b63f83e24b712d0df5"
@@ -86,10 +90,11 @@
   dependencies:
     "@types/node" "*"
 
-"@types/redis@^2.8.1":
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.1.tgz#fa156200fe294542409c3da86855d57afe655432"
+"@types/redis@^2.8.2":
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.2.tgz#a5943a6dfbaeb59fe96bb044b31d4f7c5e961ce6"
   dependencies:
+    "@types/events" "*"
     "@types/node" "*"
 
 "@types/source-map-support@^0.4.0":

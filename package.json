@@ -23,7 +23,7 @@
     "@types/node": "^8.0.58",
     "@types/power-assert": "^1.4.29",
     "@types/raven": "^2.1.2",
-    "@types/redis": "^2.8.1",
+    "@types/redis": "^2.8.2",
     "codecov": "^3.0.0",
     "eslint": "^4.11.0",
     "faker": "^4.1.0",
