@@ -358,30 +358,6 @@ babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@6.26.0, babel-core@^6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
-  dependencies:
-    babel-code-frame "^6.26.0"
-    babel-generator "^6.26.0"
-    babel-helpers "^6.24.1"
-    babel-messages "^6.23.0"
-    babel-register "^6.26.0"
-    babel-runtime "^6.26.0"
-    babel-template "^6.26.0"
-    babel-traverse "^6.26.0"
-    babel-types "^6.26.0"
-    babylon "^6.18.0"
-    convert-source-map "^1.5.0"
-    debug "^2.6.8"
-    json5 "^0.5.1"
-    lodash "^4.17.4"
-    minimatch "^3.0.4"
-    path-is-absolute "^1.0.1"
-    private "^0.1.7"
-    slash "^1.0.0"
-    source-map "^0.5.6"
-
 babel-core@^6.17.0, babel-core@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.24.1.tgz#8c428564dce1e1f41fb337ec34f4c3b022b5ad83"
@@ -405,6 +381,30 @@ babel-core@^6.17.0, babel-core@^6.24.1:
     private "^0.1.6"
     slash "^1.0.0"
     source-map "^0.5.0"
+
+babel-core@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
+  dependencies:
+    babel-code-frame "^6.26.0"
+    babel-generator "^6.26.0"
+    babel-helpers "^6.24.1"
+    babel-messages "^6.23.0"
+    babel-register "^6.26.0"
+    babel-runtime "^6.26.0"
+    babel-template "^6.26.0"
+    babel-traverse "^6.26.0"
+    babel-types "^6.26.0"
+    babylon "^6.18.0"
+    convert-source-map "^1.5.0"
+    debug "^2.6.8"
+    json5 "^0.5.1"
+    lodash "^4.17.4"
+    minimatch "^3.0.4"
+    path-is-absolute "^1.0.1"
+    private "^0.1.7"
+    slash "^1.0.0"
+    source-map "^0.5.6"
 
 babel-eslint@^8.0.0:
   version "8.0.3"
@@ -4296,9 +4296,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier-eslint-cli@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/prettier-eslint-cli/-/prettier-eslint-cli-4.4.2.tgz#c72f5a3333a1022357474c36762d219378285a6a"
+prettier-eslint-cli@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/prettier-eslint-cli/-/prettier-eslint-cli-4.6.0.tgz#28454fadb813249ad5c6d1c293dc8d462842e1ff"
   dependencies:
     arrify "^1.0.1"
     babel-runtime "^6.23.0"
@@ -4315,28 +4315,27 @@ prettier-eslint-cli@^4.4.2:
     lodash.memoize "^4.1.2"
     loglevel-colored-level-prefix "^1.0.0"
     messageformat "^1.0.2"
-    prettier-eslint "^8.0.0"
+    prettier-eslint "^8.3.0"
     rxjs "^5.3.0"
     yargs "10.0.3"
 
-prettier-eslint@^8.0.0:
-  version "8.2.6"
-  resolved "https://registry.yarnpkg.com/prettier-eslint/-/prettier-eslint-8.2.6.tgz#1e39e731fb3c7aacc2cc8cb3d7409c18465855ed"
+prettier-eslint@^8.3.0:
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/prettier-eslint/-/prettier-eslint-8.3.1.tgz#406f702b5a0790c3ced11942d54e5ff22d9bc984"
   dependencies:
-    babel-core "6.26.0"
     common-tags "^1.4.0"
     dlv "^1.1.0"
     eslint "^4.5.0"
     indent-string "^3.2.0"
     lodash.merge "^4.6.0"
     loglevel-colored-level-prefix "^1.0.0"
-    prettier "^1.7.1"
+    prettier "^1.9.0"
     pretty-format "^21.2.1"
     require-relative "^0.8.7"
     typescript "^2.5.1"
     typescript-eslint-parser "^8.0.0"
 
-prettier@^1.7.1:
+prettier@^1.9.0:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.9.2.tgz#96bc2132f7a32338e6078aeb29727178c6335827"
 
