@@ -1,7 +1,7 @@
 {
   "name": "slack-channel-active-reminder",
   "description": "remind non acctive channel at slack",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "github.com/9renpoto",
   "bugs": {
     "url": "https://github.com/9renpoto/slack-channel-active-reminder/issues"
