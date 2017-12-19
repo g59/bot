@@ -9,7 +9,7 @@
   "dependencies": {
     "@slack/client": "^3.14.2",
     "config": "^1.28.1",
-    "moment": "^2.20.0"
+    "moment": "^2.20.1"
   },
   "devDependencies": {
     "@9renpoto/eslint-config-flowtype": "^0.6.0",
