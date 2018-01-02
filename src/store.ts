@@ -1,20 +1,15 @@
-import * as redis from 'redis'
+import { createClient, RedisClient } from 'redis'
 import { random } from 'lodash'
 import Raven from 'raven'
 import { CronJob } from 'cron'
-import moment from 'moment'
+import * as moment from 'moment'
 
 import { RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL } from './const'
 
-interface Score {
-  key: string
-  score: number
-}
-
 export default class Karma {
-  _SET: string
-  _PREFIX: string
-  client: redis.RedisClient
+  private _SET: string
+  private _PREFIX: string
+  private client: RedisClient
   constructor (PREFIX: string) {
     this._PREFIX = PREFIX
 
@@ -22,7 +17,7 @@ export default class Karma {
       Raven.config(RAVEN_DSN).install()
     }
 
-    this.client = redis.createClient(REDIS_URL)
+    this.client = createClient({ url: REDIS_URL })
     this.client.on('error', (err?: Error) => {
       if (err) {
         throw err
@@ -32,7 +27,11 @@ export default class Karma {
     const cron = new CronJob({
       cronTime: `00 25 04 01 */${INTERVAL} *`,
       onTick: () => {
-        const prev = this._key(moment().subtract(1, 'months').month())
+        const prev = this._key(
+          moment()
+            .subtract(1, 'months')
+            .month()
+        )
         if (prev === this._SET) {
           return
         }
@@ -44,21 +43,18 @@ export default class Karma {
     cron.start()
   }
   _key (month: number = moment().month()) {
-    return `${this._PREFIX}:${moment().year()}:${parseInt(
-      month / INTERVAL,
-      10
-    )}`
+    return `${this._PREFIX}:${moment().year()}:${month / INTERVAL}`
   }
   clearAll (key: string) {
     this.client.ZREMRANGEBYSCORE(key, 0, -1)
   }
-  top (n: number, cb: (rank: Score[]) => void) {
+  top (n: number, cb: Function) {
     this.client.zrevrange(
       this._key(),
       0,
       n,
       'WITHSCORES',
-      (err: Error, res: Score[]) => {
+      (err: any, res: any) => {
         if (err) {
           Raven.captureException(err)
         }
@@ -66,13 +62,13 @@ export default class Karma {
       }
     )
   }
-  lowest (n: number, cb: (rank: Score[]) => void) {
+  lowest (n: number, cb: Function) {
     this.client.zrange(
       this._key(),
       0,
       n,
       'WITHSCORES',
-      (err: Error, res: Score[]) => {
+      (err: any, res: any) => {
         if (err) {
           Raven.captureException(err)
         }
@@ -81,7 +77,7 @@ export default class Karma {
     )
   }
   up (key: string, n: number, cb: (cnt: number) => void): void {
-    this.client.zincrby(this._key(), n, key, (err: Error, res: Score[]) => {
+    this.client.zincrby(this._key(), n, key, (err: any, res: any) => {
       if (err) {
         Raven.captureException(err)
       }

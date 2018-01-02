@@ -2,9 +2,12 @@
 
 Karma Store
 
-[![npm version](https://badge.fury.io/js/karma-store-redis.svg)](https://badge.fury.io/js/karma-store-redis) [![Build Status][travis-image]][travis-url] [![codecov][codecov-image]][codecov-url]
+[![npm version](https://badge.fury.io/js/karma-store-redis.svg)](https://badge.fury.io/js/karma-store-redis)
+[![Build Status][travis-image]][travis-url]
+[![codecov][codecov-image]][codecov-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
+[![devDependency Status](https://david-dm.org/9renpoto/karma-store-redis/dev-status.svg)](https://david-dm.org/9renpoto/karma-store-redis/dev-status.svg)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F9renpoto%2Fkarma-store-redis.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F9renpoto%2Fkarma-store-redis?ref=badge_shield)
- [![Dependency Status][daviddm-image]][daviddm-url] [![devDependency Status][dev-daviddm-image]][dev-daviddm-url] [![Greenkeeper badge](https://badges.greenkeeper.io/9renpoto/karma-store-redis.svg)](https://greenkeeper.io/)
 
 ## Install
 
@@ -22,8 +25,5 @@ MIT
 [codecov-url]: https://codecov.io/gh/9renpoto/karma-store-redis
 [daviddm-image]: https://david-dm.org/9renpoto/karma-store-redis.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/9renpoto/karma-store-redis
-[dev-daviddm-image]: https://david-dm.org/9renpoto/karma-store-redis/dev-status.svg
-[dev-daviddm-url]: https://david-dm.org/9renpoto/karma-store-redis?type=dev
-
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F9renpoto%2Fkarma-store-redis.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F9renpoto%2Fkarma-store-redis?ref=badge_large)

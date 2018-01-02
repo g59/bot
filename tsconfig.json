@@ -6,12 +6,10 @@
     "sourceMap": true,
     "outDir": "./lib",
     "removeComments": true,
-    "importHelpers": true,
     "downlevelIteration": true,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "noImplicitThis": true,
     "alwaysStrict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -21,5 +19,8 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "exclude": [
+    "test"
+  ]
 }
