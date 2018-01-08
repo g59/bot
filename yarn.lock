@@ -1616,9 +1616,9 @@ concat-stream@~1.5.0:
     readable-stream "~2.0.0"
     typedarray "~0.0.5"
 
-config@^1.29.0:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/config/-/config-1.29.0.tgz#f89190095ec8cfe886ea52b7d3d96cadfa577b7f"
+config@^1.29.1:
+  version "1.29.1"
+  resolved "https://registry.yarnpkg.com/config/-/config-1.29.1.tgz#155c9fbc5a8636120e9eb5c183c212add3b7fe18"
   dependencies:
     json5 "0.4.0"
     os-homedir "1.0.2"
