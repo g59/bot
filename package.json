@@ -20,7 +20,7 @@
     "@types/lodash": "^4.14.92",
     "@types/mocha": "^2.2.46",
     "@types/moment": "^2.13.0",
-    "@types/node": "^8.0.58",
+    "@types/node": "^9.3.0",
     "@types/power-assert": "^1.4.29",
     "@types/raven": "^2.1.2",
     "@types/redis": "^2.8.2",
