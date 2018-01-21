@@ -84,10 +84,11 @@
     "@types/empower" "*"
     "@types/power-assert-formatter" "*"
 
-"@types/raven@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@types/raven/-/raven-2.1.2.tgz#f066762a40aa3dd2fa8dbfc046ab4ecaf9bf03a4"
+"@types/raven@^2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@types/raven/-/raven-2.1.4.tgz#13bc4d02b25ce4f4ee235e571d791672741cafb3"
   dependencies:
+    "@types/events" "*"
     "@types/node" "*"
 
 "@types/redis@^2.8.2":
