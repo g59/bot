@@ -37,9 +37,9 @@
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@types/faker/-/faker-4.1.2.tgz#f8ab50c9f9af68c160dd71b63f83e24b712d0df5"
 
-"@types/lodash@^4.14.97":
-  version "4.14.97"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.97.tgz#7262d6d5fc5e87cdb3f68eb33accd4024f2b211e"
+"@types/lodash@^4.14.98":
+  version "4.14.98"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.98.tgz#aaf012ae443e657e7885e605a4c1b340db160609"
 
 "@types/minimist@^1.2.0":
   version "1.2.0"
