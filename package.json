@@ -14,7 +14,7 @@
     "redis": "^2.8.0"
   },
   "devDependencies": {
-    "@9renpoto/eslint-config": "^2.3.0",
+    "@9renpoto/eslint-config": "^2.4.0",
     "@types/cron": "^1.2.1",
     "@types/faker": "^4.1.2",
     "@types/lodash": "^4.14.100",
