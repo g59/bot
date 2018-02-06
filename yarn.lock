@@ -74,9 +74,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@slack/client@^3.15.0":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@slack/client/-/client-3.15.0.tgz#796ee2b1182cd37fadbaeb37752121b2028a1704"
+"@slack/client@^3.16.0":
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/@slack/client/-/client-3.16.0.tgz#a9963a6a24d41e74dc0f7ff09d9f1b2a01b97bfd"
   dependencies:
     async "^1.5.0"
     bluebird "^3.3.3"
