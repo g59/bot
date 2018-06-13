@@ -18,7 +18,7 @@
     "babel-preset-env": "1.7.0",
     "babel-preset-flow": "6.23.0",
     "babel-register": "6.26.0",
-    "cross-env": "5.1.6",
+    "cross-env": "5.2.0",
     "documentation": "8.0.0",
     "eslint": "4.19.1",
     "flow-bin": "0.74.0",
