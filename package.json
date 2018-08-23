@@ -19,7 +19,7 @@
     "babel-preset-flow": "6.23.0",
     "babel-register": "6.26.0",
     "cross-env": "5.2.0",
-    "documentation": "8.1.1",
+    "documentation": "8.1.2",
     "eslint": "4.19.1",
     "flow-bin": "0.79.1",
     "ghpages": "0.0.10",
