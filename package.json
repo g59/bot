@@ -24,7 +24,7 @@
     "@types/power-assert": "1.4.29",
     "@types/raven": "2.1.5",
     "@types/redis": "2.8.7",
-    "codecov": "3.0.0",
+    "codecov": "3.1.0",
     "eslint": "5.8.0",
     "faker": "4.1.0",
     "husky": "1.1.3",
