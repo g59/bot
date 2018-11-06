@@ -167,9 +167,9 @@
     "@types/empower" "*"
     "@types/power-assert-formatter" "*"
 
-"@types/raven@2.1.5":
-  version "2.1.5"
-  resolved "http://registry.npmjs.org/@types/raven/-/raven-2.1.5.tgz#b32411db232e2b316fdd52518b5c41a9240d647c"
+"@types/raven@2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@types/raven/-/raven-2.5.1.tgz#62ef0a59e29691945e1f295b62ed199619cbd9b6"
   dependencies:
     "@types/events" "*"
     "@types/node" "*"
