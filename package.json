@@ -38,7 +38,7 @@
     "source-map-support": "0.5.9",
     "ts-node": "7.0.1",
     "typescript": "3.1.6",
-    "typescript-eslint-parser": "20.1.1"
+    "typescript-eslint-parser": "21.0.0"
   },
   "directories": {
     "test": "test/"
