@@ -7,21 +7,21 @@
     "url": "https://github.com/9renpoto/slack-channel-active-reminder/issues"
   },
   "dependencies": {
-    "@slack/client": "^4.0.0",
-    "config": "^2.0.0",
-    "moment": "^2.20.1"
+    "@slack/client": "4.0.0",
+    "moment": "2.20.1"
   },
   "devDependencies": {
     "@9renpoto/eslint-config-flowtype": "4.7.0",
-    "babel": "6.23.0",
-    "babel-cli": "6.26.0",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-flow": "6.23.0",
-    "babel-register": "6.26.0",
+    "@babel/cli": "7.1.5",
+    "@babel/core": "7.1.6",
+    "@babel/preset-env": "7.1.6",
+    "@babel/preset-flow": "7.0.0",
+    "@babel/register": "7.0.0",
     "cross-env": "5.2.0",
-    "documentation": "8.1.2",
+    "documentation": "9.0.0-alpha.1",
     "eslint": "5.9.0",
     "flow-bin": "0.86.0",
+    "flow-typed": "2.5.1",
     "ghpages": "0.0.10",
     "husky": "1.1.4",
     "lint-staged": "8.0.5",
@@ -32,20 +32,14 @@
   "engines": {
     "node": ">=7.10"
   },
-  "files": [
-    "lib"
-  ],
-  "homepage": "https://github.com/9renpoto/slack-channel-active-reminder#readme",
-  "keywords": [
-    "slack"
-  ],
+  "files": ["lib"],
+  "homepage":
+    "https://github.com/9renpoto/slack-channel-active-reminder#readme",
+  "keywords": ["slack"],
   "license": "MIT",
   "lint-staged": {
-    "*.js": [
-      "prettier-eslint --write",
-      "eslint --cache",
-      "git add"
-    ]
+    "*.js": ["prettier-eslint --write", "eslint --cache", "git add"],
+    "*.{md,json,yml}": ["prettier --write", "git add"]
   },
   "main": "lib/index.js",
   "repository": {
@@ -61,14 +55,19 @@
     "lint:documentation": "documentation lint src",
     "lint:es": "eslint . --cache",
     "lint:flow": "flow",
+    "postinstall": "flow-typed install -s",
     "postpublish": "ghpages --path docs",
     "prebuild": "npm run clean",
-    "precommit": "lint-staged",
     "prepublish": "npm run build",
     "prestart": "npm run build",
     "pretest": "npm run build",
     "start": "node lib/index.js",
     "test": "run-p test:*",
     "test:lint": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
