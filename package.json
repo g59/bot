@@ -7,11 +7,11 @@
     "url": "https://github.com/9renpoto/karma-store/pulls"
   },
   "dependencies": {
-    "cron": "^1.3.0",
-    "lodash": "^4.17.5",
-    "moment": "^2.19.4",
-    "raven": "^2.4.1",
-    "redis": "^2.8.0"
+    "@sentry/node": "4.3.4",
+    "cron": "1.3.0",
+    "lodash": "4.17.5",
+    "moment": "2.19.4",
+    "redis": "2.8.0"
   },
   "devDependencies": {
     "@9renpoto/eslint-config": "4.6.0",
@@ -22,46 +22,32 @@
     "@types/moment": "2.13.0",
     "@types/node": "9.6.37",
     "@types/power-assert": "1.5.0",
-    "@types/raven": "2.5.1",
-    "@types/redis": "2.8.7",
+    "@types/redis": "2.8.8",
     "codecov": "3.1.0",
     "eslint": "5.9.0",
+    "espower-typescript": "9.0.1",
     "faker": "4.1.0",
     "husky": "1.1.4",
-    "intelli-espower-loader": "1.0.1",
     "lint-staged": "8.0.4",
     "mocha": "5.2.0",
     "nyc": "13.1.0",
     "power-assert": "1.6.1",
     "prettier-eslint-cli": "4.7.1",
     "rimraf": "2.6.2",
-    "source-map-support": "0.5.9",
     "ts-node": "7.0.1",
     "typescript": "3.1.6",
-    "typescript-eslint-parser": "21.0.0"
+    "typescript-eslint-parser": "21.0.1"
   },
   "directories": {
     "test": "test/"
   },
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "homepage": "https://github.com/9renpoto/karma-store#readme",
-  "keywords": [
-    "karma",
-    "redis"
-  ],
+  "keywords": ["karma", "redis"],
   "license": "MIT",
   "lint-staged": {
-    "*.ts": [
-      "prettier-eslint --parser typescript --write",
-      "eslint --ext=ts",
-      "git add"
-    ],
-    "*.md": [
-      "prettier --parser markdown --write",
-      "git add"
-    ]
+    "*.ts": ["prettier-eslint --write", "eslint --ext=ts", "git add"],
+    "*.{md,json}": ["prettier --write", "git add"]
   },
   "main": "lib/store.js",
   "repository": {
@@ -74,8 +60,12 @@
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint . --cache --ext=ts",
     "prebuild": "npm run clean",
-    "precommit": "lint-staged",
     "prepublish": "npm run build",
-    "test": "nyc mocha -- test/*.test.ts"
+    "test": "TS_NODE_TRANSPILE_ONLY=1 NODE_ENV=test nyc mocha -- test/*.test.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

@@ -1,24 +1,22 @@
-import { createClient, RedisClient } from 'redis'
+import { createClient, RedisClient, Callback } from 'redis'
 import { random } from 'lodash'
-import Raven from 'raven'
+import Sentry from '@sentry/node'
 import { CronJob } from 'cron'
 import * as moment from 'moment'
-
 import { RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL } from './const'
 
 export default class Karma {
-  private _SET: string
   private _PREFIX: string
   private client: RedisClient
   constructor (PREFIX: string) {
     this._PREFIX = PREFIX
 
     if (RAVEN_DSN) {
-      Raven.config(RAVEN_DSN).install()
+      Sentry.init({ dsn: RAVEN_DSN, debug: process.env.NODE_ENV === 'test' })
     }
 
     this.client = createClient({ url: REDIS_URL })
-    this.client.on('error', (err?: Error) => {
+    this.client.on('error', err => {
       if (err) {
         throw err
       }
@@ -32,64 +30,63 @@ export default class Karma {
             .subtract(1, 'months')
             .month()
         )
-        if (prev === this._SET) {
-          return
-        }
         this.clearAll(prev)
       },
       start: false,
       timeZone: TIMEZONE
     })
+    if (process.env.NODE_ENV === 'test') {
+      return
+    }
     cron.start()
   }
+
+  quit () {
+    this.client.quit()
+  }
+
   _key (month: number = moment().month()) {
     return `${this._PREFIX}:${moment().year()}:${month / INTERVAL}`
   }
+
   clearAll (key: string) {
     this.client.ZREMRANGEBYSCORE(key, 0, -1)
   }
-  top (n: number, cb: Function) {
-    this.client.zrevrange(
-      this._key(),
-      0,
-      n,
-      'WITHSCORES',
-      (err: any, res: any) => {
-        if (err) {
-          Raven.captureException(err)
-        }
-        cb(res)
-      }
-    )
-  }
-  lowest (n: number, cb: Function) {
-    this.client.zrange(
-      this._key(),
-      0,
-      n,
-      'WITHSCORES',
-      (err: any, res: any) => {
-        if (err) {
-          Raven.captureException(err)
-        }
-        cb(res)
-      }
-    )
-  }
-  up (key: string, n: number, cb: (cnt: number) => void): void {
-    this.client.zincrby(this._key(), n, key, (err: any, res: any) => {
+
+  top (n: number, cb: Callback<string[]>) {
+    this.client.zrevrange(this._key(), 0, n, 'WITHSCORES', (err, res) => {
       if (err) {
-        Raven.captureException(err)
+        Sentry.captureException(err)
       }
-      cb(res)
+      cb(err, res)
     })
   }
-  down (key: string, n: number, cb: (cnt: number) => void): void {
+
+  lowest (n: number, cb: Callback<string[]>) {
+    this.client.zrange(this._key(), 0, n, 'WITHSCORES', (err, res) => {
+      if (err) {
+        Sentry.captureException(err)
+      }
+      cb(err, res)
+    })
+  }
+
+  up (key: string, n: number, cb: Callback<string>): void {
+    this.client.zincrby(this._key(), n, key, (err, res) => {
+      if (err) {
+        Sentry.captureException(err)
+      }
+      cb(err, res)
+    })
+  }
+
+  down (key: string, n: number, cb: Callback<string>): void {
     this.up(key, n * -1, cb)
   }
+
   random (
     key: string,
-    cb: (cnt: number) => void,
+    cb: Callback<string>,
     min: number = 1,
     max: number = 1
   ): void {
