@@ -20,7 +20,7 @@
     "cross-env": "5.2.0",
     "documentation": "9.0.0-alpha.1",
     "eslint": "5.9.0",
-    "flow-bin": "0.86.0",
+    "flow-bin": "0.87.0",
     "flow-typed": "2.5.1",
     "ghpages": "0.0.10",
     "husky": "1.2.0",
