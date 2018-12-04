@@ -955,10 +955,10 @@ cosmiconfig@5.0.6, cosmiconfig@^5.0.6:
     js-yaml "^3.9.0"
     parse-json "^4.0.0"
 
-cron@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/cron/-/cron-1.5.0.tgz#50acb15ec640cff1f6f42091c9df2b81ed303066"
-  integrity sha512-j7zMFLrcSta53xqOvETUt8ge+PM14GtF47gEGJJeVlM6qP24/eWHSgtiWiEiKBR2sHS8xZaBQZq4D7vFXg8dcQ==
+cron@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/cron/-/cron-1.5.1.tgz#84bf61574dc95e40698788261c7b23ab85446d5b"
+  integrity sha512-KXadzIvC7hvS7eMWw+L0AK10CBKc596K7DNGi0rOsSnp9QjiSWyiwKv4pBZCMvOZTPgAMotXNttkRwP7ymYlzQ==
   dependencies:
     moment-timezone "^0.5.x"
 
