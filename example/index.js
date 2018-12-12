@@ -1,6 +1,5 @@
 /* @flow */
-require('@babel/register')
-const Reminder = require('../src').default
+const Reminder = require('../lib').default
 
 const reminder = new Reminder()
 reminder.postRemindMessage()

@@ -12,16 +12,13 @@
   },
   "devDependencies": {
     "@9renpoto/eslint-config": "4.7.0",
-    "@9renpoto/tslint-config": "4.7.0",
     "cross-env": "5.2.0",
-    "eslint": "5.9.0",
-    "ghpages": "0.0.10",
+    "gh-pages": "2.0.1",
     "husky": "1.2.0",
     "lint-staged": "8.1.0",
     "npm-run-all": "4.1.5",
     "prettier-eslint-cli": "4.7.1",
     "rimraf": "2.6.2",
-    "tslint": "5.11.0",
     "typedoc": "0.13.0",
     "typescript": "3.1.6",
     "typescript-eslint-parser": "21.0.1"
@@ -65,12 +62,13 @@
     "clean": "rimraf lib",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache --ext=ts",
-    "prebuild": "npm run clean",
-    "prepublish": "npm run build",
+    "prepare": "run-s clean build",
     "prestart": "npm run build",
     "pretest": "npm run build",
     "start": "node lib/index.js",
     "test": "run-p test:*",
+    "test:build": "npm run lint",
     "test:lint": "npm run lint"
-  }
+  },
+  "types": "lib/index.d.ts"
 }
