@@ -1,0 +1,7 @@
+{
+  "parser": "typescript-eslint-parser",
+  "extends": ["@9renpoto/eslint-config"],
+  "rules": {
+    "no-unused-vars": 1
+  }
+}

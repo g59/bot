@@ -11,35 +11,47 @@
     "moment": "2.22.2"
   },
   "devDependencies": {
-    "@9renpoto/eslint-config-flowtype": "4.7.0",
-    "@babel/cli": "7.2.0",
-    "@babel/core": "7.2.0",
-    "@babel/preset-env": "7.2.0",
-    "@babel/preset-flow": "7.0.0",
-    "@babel/register": "7.0.0",
+    "@9renpoto/eslint-config": "4.7.0",
+    "@9renpoto/tslint-config": "4.7.0",
     "cross-env": "5.2.0",
-    "documentation": "9.0.0",
-    "eslint": "5.10.0",
-    "flow-bin": "0.88.0",
-    "flow-typed": "2.5.1",
+    "eslint": "5.9.0",
     "ghpages": "0.0.10",
     "husky": "1.2.0",
     "lint-staged": "8.1.0",
     "npm-run-all": "4.1.5",
     "prettier-eslint-cli": "4.7.1",
-    "rimraf": "2.6.2"
+    "rimraf": "2.6.2",
+    "tslint": "5.11.0",
+    "typedoc": "0.13.0",
+    "typescript": "3.1.6",
+    "typescript-eslint-parser": "21.0.1"
   },
   "engines": {
     "node": ">=7.10"
   },
-  "files": ["lib"],
-  "homepage":
-    "https://github.com/9renpoto/slack-channel-active-reminder#readme",
-  "keywords": ["slack"],
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/9renpoto/slack-channel-active-reminder#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "slack"
+  ],
   "license": "MIT",
   "lint-staged": {
-    "*.js": ["prettier-eslint --write", "eslint --cache", "git add"],
-    "*.{md,json,yml}": ["prettier --write", "git add"]
+    "*.ts": [
+      "prettier-eslint --write",
+      "eslint --ext=ts",
+      "git add"
+    ],
+    "*.{md,json,yml}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "main": "lib/index.js",
   "repository": {
@@ -47,16 +59,12 @@
     "url": "git+ssh://git@github.com/9renpoto/slack-channel-active-reminder.git"
   },
   "scripts": {
-    "build": "mkdir -p docs lib && run-p build:*",
-    "build:doc": "documentation build src/** -f html -o docs",
-    "build:js": "cross-env NODE_ENV=production babel src -d lib",
-    "clean": "rimraf docs lib",
+    "build": "run-p build:*",
+    "build:docs": "typedoc --out docs",
+    "build:ts": "tsc",
+    "clean": "rimraf lib",
     "lint": "run-p lint:*",
-    "lint:documentation": "documentation lint src",
-    "lint:es": "eslint . --cache",
-    "lint:flow": "flow",
-    "postinstall": "flow-typed install -s",
-    "postpublish": "ghpages --path docs",
+    "lint:es": "eslint . --cache --ext=ts",
     "prebuild": "npm run clean",
     "prepublish": "npm run build",
     "prestart": "npm run build",
@@ -64,10 +72,5 @@
     "start": "node lib/index.js",
     "test": "run-p test:*",
     "test:lint": "npm run lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
