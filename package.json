@@ -43,6 +43,7 @@
     "*.ts": [
       "prettier-eslint --write",
       "eslint --ext=ts",
+      "npm run build:docs",
       "git add"
     ],
     "*.{md,json,yml}": [
