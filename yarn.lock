@@ -188,10 +188,10 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
-"@types/cron@1.3.0":
-  version "1.3.0"
-  resolved "http://registry.npmjs.org/@types/cron/-/cron-1.3.0.tgz#0bb4bc0bd8f493b81b5599a3719520d1d633e669"
-  integrity sha512-RNJ6Hbxs9CbUw+Bxt8kpN8/yNlYG1xli0JZSO1xTJJxFjgD2KWctFSkJeJpjf9iLJU0jeNPoJ5LEru7eBN3xuA==
+"@types/cron@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@types/cron/-/cron-1.6.0.tgz#cafddc20eadc55fb6ae38352c85c106bed533271"
+  integrity sha512-G9evfyFE5OlVtn4Opc99Y3fy0mCT/u8pm2NWOWM0jeeGPmUnJEjNGTpdrS+0IYaIeinentrKrRN9M+7JVZS83A==
 
 "@types/empower@*":
   version "1.2.30"
