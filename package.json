@@ -7,7 +7,7 @@
     "url": "https://github.com/9renpoto/karma-store/pulls"
   },
   "dependencies": {
-    "@sentry/node": "4.5.3",
+    "@sentry/node": "4.5.4",
     "cron": "1.6.0",
     "lodash": "4.17.11",
     "moment": "2.24.0",
