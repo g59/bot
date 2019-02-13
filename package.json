@@ -22,7 +22,7 @@
     "@types/node": "10.12.26",
     "@types/power-assert": "1.5.0",
     "@types/redis": "2.8.10",
-    "codecov": "3.1.0",
+    "codecov": "3.2.0",
     "eslint": "5.13.0",
     "espower-typescript": "9.0.1",
     "faker": "4.1.0",
