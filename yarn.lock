@@ -188,10 +188,12 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
-"@types/cron@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@types/cron/-/cron-1.6.0.tgz#cafddc20eadc55fb6ae38352c85c106bed533271"
-  integrity sha512-G9evfyFE5OlVtn4Opc99Y3fy0mCT/u8pm2NWOWM0jeeGPmUnJEjNGTpdrS+0IYaIeinentrKrRN9M+7JVZS83A==
+"@types/cron@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@types/cron/-/cron-1.6.1.tgz#b22a7106a2f512cf0d3f565fc72691e287d2f23a"
+  integrity sha512-abeTtw2np7TTWM6Oe6gCayxv7y+vooT8qXS84PS1NLi++P51IACO1Cwsu3KhjRyL0a48kfv8547wekTrMK8dTA==
+  dependencies:
+    moment ">=2.14.0"
 
 "@types/empower@*":
   version "1.2.30"
@@ -3201,7 +3203,7 @@ moment-timezone@^0.5.x:
   dependencies:
     moment ">= 2.6.0"
 
-moment@2.24.0:
+moment@2.24.0, moment@>=2.14.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
