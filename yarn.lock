@@ -224,10 +224,10 @@
     "@types/empower" "*"
     "@types/power-assert-formatter" "*"
 
-"@types/redis@2.8.10":
-  version "2.8.10"
-  resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.10.tgz#27130c3bcc803265a51cb978538ca330dff2e748"
-  integrity sha512-X0NeV3ivoif2SPsmuPhwTkKfcr1fDJlaJIOyxZ9/TCIEbvzMzmZlstqCZ5r7AOolbOJtAfvuGArNXMexYYH3ng==
+"@types/redis@2.8.11":
+  version "2.8.11"
+  resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.11.tgz#103b6b165edf037dd9f50216690cf8e0045f076d"
+  integrity sha512-i0AqDzjX0FlO+npqkhl1etZw1fGnJc0IeHUHKAf/V7Drk+rDJI634GE9Lwh8aj/2ahuW6jHdWX4ZnyNofWXKrw==
   dependencies:
     "@types/node" "*"
 
