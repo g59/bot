@@ -27,10 +27,10 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@slack/client@4.11.0":
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/@slack/client/-/client-4.11.0.tgz#f5f7b832a90c4bd5456621ed802757fd1e5a2d02"
-  integrity sha512-quL60BiEVlJkFHKCAQlerrf0Z13xvZHO8SPBMbmvdL7x84qe+KCbGnwxDBJKbda/eXStvePuQ3lrz6iwLUCQpg==
+"@slack/client@4.12.0":
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/@slack/client/-/client-4.12.0.tgz#ec14c84a572cd9afed398bbcf7241c5a83e94c57"
+  integrity sha512-ltbdkcIWk2eIptCCT/oPmeCGlG8xb3kXfwuPTtvNujioLMo2xXqiPdfl7xK+AeUfnvj3fJLYbpTPuBTscuhgzw==
   dependencies:
     "@types/form-data" "^2.2.1"
     "@types/is-stream" "^1.1.0"
@@ -48,7 +48,7 @@
     object.entries "^1.1.0"
     object.getownpropertydescriptors "^2.0.3"
     object.values "^1.1.0"
-    p-cancelable "^1.0.0"
+    p-cancelable "~1.0.0"
     p-queue "^2.4.2"
     p-retry "^3.0.1"
     retry "^0.12.0"
@@ -2350,7 +2350,7 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
 
-p-cancelable@^1.0.0:
+p-cancelable@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-1.0.0.tgz#07e9c6d22c31f9c6784cb4f1e1454a79b6d9e2d6"
   integrity sha512-USgPoaC6tkTGlS831CxsVdmZmyb8tR1D+hStI84MyckLOzfJlYQUweomrwE3D8T7u5u5GVuW064LT501wHTYYA==
