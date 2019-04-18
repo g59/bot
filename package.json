@@ -34,7 +34,7 @@
     "prettier-eslint-cli": "4.7.1",
     "rimraf": "2.6.3",
     "ts-node": "8.1.0",
-    "typescript": "3.4.3",
+    "typescript": "3.4.4",
     "typescript-eslint-parser": "21.0.2"
   },
   "directories": {
