@@ -5,7 +5,6 @@ services:
 node_js:
 - stable
 - lts/*
-- 6
 env:
   matrix:
   - CMD=lint
