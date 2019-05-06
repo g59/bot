@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@slack/client": "5.0.1",
-    "moment": "2.24.0"
+    "moment": "2.24.0",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "@9renpoto/eslint-config": "4.7.0",
@@ -68,7 +69,10 @@
     "start": "node lib/index.js",
     "test": "run-p test:*",
     "test:build": "npm run lint",
-    "test:lint": "npm run lint"
+    "test:lint": "npm run lint",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "snyk": true
 }
