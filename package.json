@@ -29,7 +29,7 @@
     "husky": "2.3.0",
     "lint-staged": "8.1.7",
     "mocha": "5.2.0",
-    "nyc": "14.0.0",
+    "nyc": "14.1.1",
     "power-assert": "1.6.1",
     "prettier-eslint-cli": "4.7.1",
     "rimraf": "2.6.3",
