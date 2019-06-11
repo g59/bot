@@ -26,7 +26,7 @@
     "eslint": "5.16.0",
     "espower-typescript": "9.0.2",
     "faker": "4.1.0",
-    "husky": "2.4.0",
+    "husky": "2.4.1",
     "lint-staged": "8.2.0",
     "mocha": "5.2.0",
     "nyc": "14.1.1",
