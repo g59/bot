@@ -22,6 +22,7 @@
     "@types/node": "10.14.12",
     "@types/power-assert": "1.5.0",
     "@types/redis": "2.8.13",
+    "@typescript-eslint/parser": "1.11.0",
     "codecov": "3.5.0",
     "eslint": "5.16.0",
     "espower-typescript": "9.0.2",
@@ -34,8 +35,7 @@
     "prettier-eslint-cli": "5.0.0",
     "rimraf": "2.6.3",
     "ts-node": "8.3.0",
-    "typescript": "3.5.2",
-    "typescript-eslint-parser": "21.0.2"
+    "typescript": "3.5.2"
   },
   "directories": {
     "test": "test/"
@@ -45,7 +45,7 @@
   "keywords": ["karma", "redis"],
   "license": "MIT",
   "lint-staged": {
-    "*.ts": ["prettier-eslint --write", "eslint --ext=ts", "git add"],
+    "*.ts": ["prettier-eslint --write", "git add"],
     "*.{md,json}": ["prettier --write", "git add"]
   },
   "main": "lib/store.js",
