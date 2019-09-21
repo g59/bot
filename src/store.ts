@@ -1,8 +1,8 @@
 import { createClient, RedisClient, Callback } from "redis";
-import { random } from "lodash";
-import Sentry from "@sentry/node";
+import random from "lodash.random";
+import * as Sentry from "@sentry/node";
 import { CronJob } from "cron";
-import * as moment from "moment";
+import moment from "moment";
 import { RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL } from "./const";
 
 export default class Karma {
