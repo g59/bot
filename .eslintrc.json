@@ -1,5 +1,9 @@
 {
-  "extends": ["@9renpoto/eslint-config"],
+  "extends": [
+    "@9renpoto/eslint-config",
+    "prettier/@typescript-eslint",
+    "plugin:import/typescript"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 6,

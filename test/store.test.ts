@@ -1,6 +1,5 @@
-import 'mocha'
 import { random } from 'faker'
-import * as assert from 'assert'
+import assert from 'assert'
 import Store from '../src/store'
 
 describe('Store', () => {
