@@ -1,5 +1,5 @@
-import { random } from 'faker'
 import assert from 'assert'
+import { random } from 'faker'
 import Store from '../src/store'
 
 describe('Store', () => {
