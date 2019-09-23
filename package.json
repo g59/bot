@@ -16,13 +16,12 @@
     "redis": "2.8.0"
   },
   "devDependencies": {
-    "@9renpoto/eslint-config": "5.2.0",
+    "@9renpoto/eslint-config-typescript": "5.2.0",
     "@types/cron": "1.7.1",
     "@types/faker": "4.1.5",
     "@types/mocha": "5.2.7",
     "@types/node": "12.7.5",
     "@types/power-assert": "1.5.0",
-    "@typescript-eslint/parser": "2.3.0",
     "codecov": "3.6.1",
     "eslint": "6.4.0",
     "espower-typescript": "9.0.2",

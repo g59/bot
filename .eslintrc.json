@@ -1,17 +1,5 @@
 {
-  "extends": [
-    "@9renpoto/eslint-config",
-    "prettier/@typescript-eslint",
-    "plugin:import/typescript"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "modules": true
-    }
-  },
+  "extends": ["@9renpoto/eslint-config-typescript"],
   "rules": {
     "no-undef": 1,
     "no-unused-vars": 1
