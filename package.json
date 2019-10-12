@@ -16,7 +16,7 @@
     "redis": "2.8.0"
   },
   "devDependencies": {
-    "@9renpoto/eslint-config-typescript": "5.2.0",
+    "@9renpoto/eslint-config-typescript": "5.2.1",
     "@types/cron": "1.7.1",
     "@types/faker": "4.1.6",
     "@types/mocha": "5.2.7",
