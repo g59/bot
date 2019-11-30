@@ -1,10 +1,7 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:js-lib"],
   "automerge": true,
   "major": {
     "automerge": false
-  },
-  "devDependencies": {
-    "automerge": true
   }
 }
