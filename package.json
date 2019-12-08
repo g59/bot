@@ -21,7 +21,7 @@
     "@types/faker": "4.1.8",
     "@types/mocha": "5.2.7",
     "@types/node": "12.12.14",
-    "@types/power-assert": "1.5.1",
+    "@types/power-assert": "1.5.2",
     "codecov": "3.6.1",
     "eslint": "6.7.2",
     "espower-typescript": "9.0.2",
