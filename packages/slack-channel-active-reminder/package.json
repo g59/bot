@@ -18,13 +18,10 @@
   },
   "scripts": {
     "build": "run-p build:*",
-    "build:docs": "typedoc --out docs",
+    "build:docs": "rimraf docs && typedoc --out docs",
     "build:ts": "tsc",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib docs",
     "lint": "tsc -p . --noEmit",
-    "prepare": "run-s clean build",
-    "prestart": "npm run build",
-    "pretest": "npm run build",
     "start": "node lib/index.js"
   },
   "files": [
