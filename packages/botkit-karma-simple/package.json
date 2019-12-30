@@ -1,0 +1,30 @@
+{
+  "name": "botkit-karma-simple",
+  "version": "0.3.0",
+  "description": "increment things",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/9renpoto/bot.git"
+  },
+  "author": "@9renpoto",
+  "homepage": "https://github.com/9renpoto/bot/packages/botkit-karma-simple#readme",
+  "bugs": {
+    "url": "https://github.com/9renpoto/bot/issues"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc -p . --outDir lib",
+    "clean": "rimraf lib",
+    "lint": "tsc -p . --noEmit"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "karma"
+  ],
+  "dependencies": {
+    "karma-store-redis": "^0.3.0"
+  }
+}

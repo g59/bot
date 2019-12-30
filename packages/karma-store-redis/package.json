@@ -1,0 +1,38 @@
+{
+  "name": "karma-store-redis",
+  "version": "0.3.1",
+  "description": "simple karma-store",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/9renpoto/bot/packages/karma-store-redis.git"
+  },
+  "author": "Keisuke Kan <@9renpoto>",
+  "homepage": "https://github.com/9renpoto/bot/packages/karma-store-redis#readme",
+  "bugs": {
+    "url": "https://github.com/9renpoto/bot/pulls"
+  },
+  "main": "lib/store.js",
+  "scripts": {
+    "build": "tsc -p . --outDir lib",
+    "clean": "rimraf lib",
+    "lint": "eslint . --ext=ts",
+    "prebuild": "npm run clean"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "karma",
+    "redis"
+  ],
+  "dependencies": {
+    "@types/lodash.random": "^3.2.6",
+    "@types/redis": "^2.8.14",
+    "cron": "^1.7.2",
+    "lodash.random": "^3.2.0",
+    "moment": "^2.24.0",
+    "redis": "^2.8.0"
+  },
+  "types": "lib/store.d.ts"
+}
