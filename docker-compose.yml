@@ -1,10 +1,15 @@
 version: '3'
 
 services:
-  image:
+  app: &app
     build:
       context: .
-      dockerfile: example/Dockerfile
+      dockerfile: ./Dockerfile
     env_file:
       .env
     command: ash -c "yarn workspace @mybot/example start"
+  karma:
+    <<: *app
+    env_file:
+      .env
+    command: ash -c "yarn workspace @mybot/karma start"

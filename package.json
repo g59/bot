@@ -70,6 +70,6 @@
   },
   "workspaces": [
     "packages/*",
-    "example"
+    "examples/*"
   ]
 }

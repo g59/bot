@@ -1,0 +1,12 @@
+{
+  "name": "@mybot/karma",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "ts-node src/slack.ts"
+  },
+  "dependencies": {
+    "botbuilder-adapter-slack": "^1.0.7",
+    "botkit": "^4.6.1"
+  }
+}

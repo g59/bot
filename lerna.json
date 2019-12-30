@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*", "example"],
+  "packages": ["packages/*", "examples/*"],
   "changelog": {
     "labels": {
       "enhancement": ":rocket: Enhancement",
