@@ -1,8 +1,10 @@
 import {
   ChatPostMessageArguments,
   MessageAttachment,
-  WebClient
-} from "@slack/client";
+  WebClient,
+  AttachmentAction,
+  LogLevel
+} from "@slack/web-api";
 import moment from "moment";
 
 const defaultOptions: ChatPostMessageArguments = {
@@ -21,32 +23,47 @@ const defaultOptions: ChatPostMessageArguments = {
 };
 
 export default class ActiveReminder {
-  _web: WebClient;
+  web: WebClient;
   _MAX_DATES: number;
   _POST_OPTIONS: MessageAttachment;
   constructor(
     MAX_DATES: number = 14,
+    logLevel: LogLevel = LogLevel.INFO,
     POST_OPTIONS: ChatPostMessageArguments = defaultOptions
   ) {
-    this._web = new WebClient(process.env.SLACK_API_TOKEN);
+    const API_TOKEN = process.env.SLACK_API_TOKEN;
+    if (!API_TOKEN) {
+      throw new Error("Invalid config");
+    }
+    this.web = new WebClient(API_TOKEN, {
+      logLevel
+    });
     this._MAX_DATES = MAX_DATES;
     this._POST_OPTIONS = POST_OPTIONS;
   }
 
   async postRemindMessage() {
-    const { channels } = (await this._web.conversations.list({
+    const { channels } = await this.web.conversations.list({
       exclude_archived: true,
       exclude_members: false
-    })) as any;
-    channels.map(({ id }: any) => this.checkLastMessage(id));
+    });
+    (channels as Array<AttachmentAction>).map(({ id }: AttachmentAction) =>
+      this.checkLastMessage(id!)
+    );
   }
 
-  async checkLastMessage(channel: string) {
-    const { messages } = (await this._web.channels.history({
+  private async checkLastMessage(channel: string) {
+    const { messages } = await this.web.channels.history({
       count: 1,
       channel
-    })) as any;
-    const last = moment.unix(messages[0].ts);
+    });
+    const timestamp = (messages as Array<MessageAttachment>)[0].ts;
+    const last = moment.unix(Number(timestamp));
+
+    if (!last.isValid()) {
+      throw new Error(`failed parsed timestamps: ${timestamp}`);
+    }
+
     if (
       moment()
         .subtract(this._MAX_DATES, "days")
@@ -56,13 +73,13 @@ export default class ActiveReminder {
     }
   }
 
-  async postMessage(channel: string) {
-    const options = {
+  private async postMessage(channel: string) {
+    const options: ChatPostMessageArguments = {
       ...defaultOptions,
       ...this._POST_OPTIONS
     };
 
-    await this._web.chat.postMessage({
+    await this.web.chat.postMessage({
       icon_emoji: ":video_game:",
       username: "solaire",
       ...options,

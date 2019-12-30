@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc -p .",
     "clean": "rimraf lib",
-    "lint": "tsc -p . --noEmit"
+    "lint": "tsc -p . --noEmit",
+    "prebuild": "yarn clean"
   },
   "typings": "lib/index.d.ts"
 }

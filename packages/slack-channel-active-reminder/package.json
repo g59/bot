@@ -31,7 +31,7 @@
     "slack"
   ],
   "dependencies": {
-    "@slack/client": "^5.0.2",
+    "@slack/web-api": "^5.6.0",
     "moment": "^2.24.0"
   },
   "types": "lib/index.d.ts"
