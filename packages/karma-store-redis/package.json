@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/9renpoto/bot/pulls"
   },
-  "main": "lib/store.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p . --outDir lib",
     "clean": "rimraf lib",
