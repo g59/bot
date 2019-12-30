@@ -1,6 +1,6 @@
 {
   "name": "@mybot/karma",
-  "version": "0.0.1",
+  "version": "2.0.0-beta.0",
   "private": true,
   "scripts": {
     "start": "ts-node src/slack.ts"
