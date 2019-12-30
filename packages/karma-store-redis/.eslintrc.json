@@ -1,0 +1,10 @@
+{
+  "extends": ["@9renpoto/eslint-config-typescript"],
+  "rules": {
+    "no-undef": 1,
+    "no-unused-vars": 1
+  },
+  "env": {
+    "mocha": true
+  }
+}
