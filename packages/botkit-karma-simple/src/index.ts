@@ -68,7 +68,7 @@ export default class KarmaBot {
       "karma best",
       ["direct_mention", "mention"],
       async (bot, msg) => {
-        this._store.top(cnt, top => {
+        this._store.top(cnt, (_, top) => {
           bot.reply(msg, formatRank(`The Best:`, top).join("\n"));
         });
       }
@@ -79,7 +79,7 @@ export default class KarmaBot {
       "karma worst",
       ["direct_mention", "mention"],
       async (bot, msg) => {
-        this._store.lowest(cnt, worst => {
+        this._store.lowest(cnt, (_, worst) => {
           if (worst) {
             bot.reply(msg, formatRank(`The Worst:`, worst).join("\n"));
           }

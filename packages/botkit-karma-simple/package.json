@@ -14,10 +14,9 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "build:ts": "tsc",
-    "clean": "rimraf lib coverage",
-    "lint": "tsc -p . --noEmit",
-    "test": "npm run lint && npm run build"
+    "build": "tsc -p . --outDir lib",
+    "clean": "rimraf lib",
+    "lint": "tsc -p . --noEmit"
   },
   "files": [
     "lib"
@@ -25,9 +24,6 @@
   "keywords": [
     "karma"
   ],
-  "peerDependencies": {
-    "botkit": "^0.6.x || ^0.7.0 || ^4.0.0"
-  },
   "dependencies": {
     "karma-store-redis": "^0.3.0"
   }

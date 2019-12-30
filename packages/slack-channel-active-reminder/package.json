@@ -13,13 +13,8 @@
     "url": "https://github.com/9renpoto/bot/issues"
   },
   "main": "lib/index.js",
-  "engines": {
-    "node": ">=7.10"
-  },
   "scripts": {
-    "build": "run-p build:*",
-    "build:docs": "rimraf docs && typedoc --out docs",
-    "build:ts": "tsc",
+    "build": "tsc",
     "clean": "rimraf lib docs",
     "lint": "tsc -p . --noEmit",
     "start": "node lib/index.js"

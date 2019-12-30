@@ -14,7 +14,7 @@
   },
   "main": "lib/store.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p . --outDir lib",
     "clean": "rimraf lib coverage .nyc_output",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint . --ext=ts",
@@ -36,5 +36,6 @@
     "lodash.random": "^3.2.0",
     "moment": "^2.24.0",
     "redis": "^2.8.0"
-  }
+  },
+  "types": "lib/store.d.ts"
 }
