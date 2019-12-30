@@ -1,6 +1,6 @@
 {
   "name": "karma-store-redis",
-  "version": "0.3.1",
+  "version": "2.0.0-beta.0",
   "description": "simple karma-store",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/9renpoto/bot/pulls"
   },
-  "main": "lib/store.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc -p . --outDir lib",
     "clean": "rimraf lib",
@@ -34,5 +34,5 @@
     "moment": "^2.24.0",
     "redis": "^2.8.0"
   },
-  "types": "lib/store.d.ts"
+  "types": "lib/index.d.ts"
 }

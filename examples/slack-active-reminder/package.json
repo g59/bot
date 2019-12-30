@@ -1,11 +1,13 @@
 {
   "name": "@mybot/example",
-  "version": "0.0.1",
+  "version": "2.0.0-beta.0",
   "private": true,
   "scripts": {
+    "lint": "tsc -p . --noEmit",
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
+    "slack-channel-active-reminder": "^2.0.0-beta.0",
     "@sentry/node": "^5.10.2",
     "@types/cron": "^1.7.1",
     "cron": "^1.7.2",

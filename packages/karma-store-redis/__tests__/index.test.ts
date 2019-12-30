@@ -1,5 +1,5 @@
 import { random } from "faker";
-import Store from "../src/store";
+import Store from "../src";
 
 describe("Store", () => {
   let s: Store;

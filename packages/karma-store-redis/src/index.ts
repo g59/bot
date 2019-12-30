@@ -3,7 +3,10 @@ import random = require("lodash.random");
 import * as Sentry from "@sentry/node";
 import { CronJob } from "cron";
 import moment = require("moment");
-import { RAVEN_DSN, REDIS_URL, TIMEZONE, INTERVAL } from "./const";
+
+const INTERVAL: number =
+  typeof process.env.INTERVAL === "string" ? Number(process.env.INTERVAL) : 3;
+const debug = process.env.NODE_ENV === "test";
 
 export default class Karma {
   private _PREFIX: string;
@@ -11,11 +14,9 @@ export default class Karma {
   constructor(PREFIX: string) {
     this._PREFIX = PREFIX;
 
-    if (RAVEN_DSN) {
-      Sentry.init({ dsn: RAVEN_DSN, debug: process.env.NODE_ENV === "test" });
-    }
+    Sentry.init({ dsn: process.env.SENTRY_DSN, debug });
 
-    this.client = createClient({ url: REDIS_URL });
+    this.client = createClient({ url: process.env.REDIS_URL });
     this.client.on("error", err => {
       if (err) {
         throw err;
@@ -33,9 +34,10 @@ export default class Karma {
         this.clearAll(prev);
       },
       start: false,
-      timeZone: TIMEZONE
+      timeZone: process.env.TIMEZONE
     });
-    if (process.env.NODE_ENV === "test") {
+
+    if (debug) {
       return;
     }
     cron.start();
