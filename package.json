@@ -12,6 +12,7 @@
     "lint:pkg": "lerna run lint --parallel",
     "lint:prettier": "prettier --check './packages/**/*.{js,jsx,ts,tsx}'",
     "release": "lerna exec --no-bail -- 'can-npm-publish && npm publish --registry=\"https://registry.npmjs.org/\"'",
+    "start": "yarn workspace @mybot/example start",
     "test": "jest"
   },
   "dependencies": {
@@ -68,6 +69,7 @@
     ]
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "example"
   ]
 }
