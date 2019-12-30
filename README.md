@@ -24,7 +24,7 @@ This repository is managed as monorepo.
 | :---------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
 | **[slack-channel-active-reminder](./packages/slack-channel-active-reminder)** | [![npm version](https://badge.fury.io/js/slack-channel-active-reminder.svg)](https://www.npmjs.com/package/slack-channel-active-reminder) |
 | **[botkit-karma-simple](./packages/botkit-karma-simple)**                     | [![npm version](https://badge.fury.io/js/botkit-karma-simple.svg)](https://badge.fury.io/js/botkit-karma-simple)                          |
-| **[karma-score-redis](./packages/karma-score-redis)**                         | [![npm version](https://badge.fury.io/js/karma-store-redis.svg)](https://badge.fury.io/js/karma-store-redis)                              |
+| **[karma-store-redis](./packages/karma-store-redis)**                         | [![npm version](https://badge.fury.io/js/karma-store-redis.svg)](https://badge.fury.io/js/karma-store-redis)                              |
 
 ## Install
 
