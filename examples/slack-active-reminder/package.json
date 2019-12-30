@@ -3,6 +3,7 @@
   "version": "2.0.0-beta.0",
   "private": true,
   "scripts": {
+    "lint": "tsc -p . --noEmit",
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
