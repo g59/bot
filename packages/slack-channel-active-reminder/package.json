@@ -1,74 +1,38 @@
 {
   "name": "slack-channel-active-reminder",
-  "description": "remind non acctive channel at slack",
   "version": "1.0.0",
+  "description": "remind non acctive channel at slack",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/9renpoto/bot.git"
+  },
   "author": "github.com/9renpoto",
+  "homepage": "https://github.com/9renpoto/bot/packages/slack-channel-active-reminder#readme",
   "bugs": {
-    "url": "https://github.com/9renpoto/slack-channel-active-reminder/issues"
+    "url": "https://github.com/9renpoto/bot/issues"
   },
-  "dependencies": {
-    "@slack/client": "5.0.2",
-    "moment": "2.24.0"
-  },
-  "devDependencies": {
-    "@9renpoto/eslint-config": "5.4.0",
-    "@9renpoto/eslint-config-typescript": "5.4.0",
-    "cross-env": "6.0.3",
-    "husky": "3.1.0",
-    "lint-staged": "9.5.0",
-    "npm-run-all": "4.1.5",
-    "prettier-eslint-cli": "5.0.0",
-    "rimraf": "3.0.0",
-    "typedoc": "0.15.6",
-    "typescript": "3.7.4"
-  },
+  "main": "lib/index.js",
   "engines": {
     "node": ">=7.10"
+  },
+  "scripts": {
+    "build": "run-p build:*",
+    "build:docs": "rimraf docs && typedoc --out docs",
+    "build:ts": "tsc",
+    "clean": "rimraf lib docs",
+    "lint": "tsc -p . --noEmit",
+    "start": "node lib/index.js"
   },
   "files": [
     "lib"
   ],
-  "homepage": "https://github.com/9renpoto/slack-channel-active-reminder#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "keywords": [
     "slack"
   ],
-  "license": "MIT",
-  "lint-staged": {
-    "*.ts": [
-      "prettier-eslint --write",
-      "eslint --ext=ts",
-      "npm run build:docs",
-      "git add"
-    ],
-    "*.{md,json,yml}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "main": "lib/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/9renpoto/slack-channel-active-reminder.git"
-  },
-  "scripts": {
-    "build": "run-p build:*",
-    "build:docs": "typedoc --out docs",
-    "build:ts": "tsc",
-    "clean": "rimraf lib",
-    "lint": "run-p lint:*",
-    "lint:es": "eslint . --cache --ext=ts",
-    "prepare": "run-s clean build",
-    "prestart": "npm run build",
-    "pretest": "npm run build",
-    "start": "node lib/index.js",
-    "test": "run-p test:*",
-    "test:build": "npm run lint",
-    "test:lint": "npm run lint"
+  "dependencies": {
+    "@slack/client": "^5.0.2",
+    "moment": "^2.24.0"
   },
   "types": "lib/index.d.ts"
 }
