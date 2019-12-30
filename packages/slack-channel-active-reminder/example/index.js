@@ -1,5 +1,5 @@
 /* @flow */
-const Reminder = require('../lib').default
+const Reminder = require("../lib").default;
 
-const reminder = new Reminder()
-reminder.postRemindMessage()
+const reminder = new Reminder();
+reminder.postRemindMessage();
