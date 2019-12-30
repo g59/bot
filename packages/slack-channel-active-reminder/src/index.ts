@@ -57,7 +57,13 @@ export default class ActiveReminder {
       count: 1,
       channel
     });
-    const last = moment((messages as Array<MessageAttachment>)[0].ts);
+    const timestamp = (messages as Array<MessageAttachment>)[0].ts;
+    const last = moment.unix(Number(timestamp));
+
+    if (!last.isValid()) {
+      throw new Error(`failed parsed timestamps: ${timestamp}`);
+    }
+
     if (
       moment()
         .subtract(this._MAX_DATES, "days")
