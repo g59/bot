@@ -34,7 +34,7 @@
     "prettier-eslint-cli": "5.0.0",
     "prettier-plugin-package": "0.3.1",
     "rimraf": "3.0.0",
-    "textlint": "11.6.0",
+    "textlint": "11.6.1",
     "ts-jest": "24.3.0"
   },
   "husky": {
