@@ -35,7 +35,7 @@
     "prettier-plugin-package": "0.3.1",
     "rimraf": "3.0.1",
     "textlint": "11.6.2",
-    "ts-jest": "25.1.0"
+    "ts-jest": "25.2.0"
   },
   "husky": {
     "hooks": {
