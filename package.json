@@ -30,7 +30,7 @@
     "husky": "4.2.3",
     "jest": "25.2.4",
     "lerna-changelog": "1.0.1",
-    "lint-staged": "10.1.0",
+    "lint-staged": "10.1.1",
     "prettier-eslint-cli": "5.0.0",
     "prettier-plugin-package": "0.3.1",
     "rimraf": "3.0.2",
