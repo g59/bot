@@ -26,5 +26,6 @@
   ],
   "dependencies": {
     "karma-store-redis": "^2.0.0-beta.1"
-  }
+  },
+  "types": "lib/index.d.ts"
 }
