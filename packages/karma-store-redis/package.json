@@ -28,11 +28,11 @@
   ],
   "dependencies": {
     "@types/lodash.random": "^3.2.6",
-    "@types/redis": "^2.8.14",
-    "cron": "^1.7.2",
+    "@types/redis": "^2.8.17",
+    "cron": "^1.8.2",
     "lodash.random": "^3.2.0",
     "moment": "^2.24.0",
-    "redis": "^3.0.0"
+    "redis": "^3.0.2"
   },
   "types": "lib/index.d.ts"
 }

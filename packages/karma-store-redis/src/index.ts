@@ -17,7 +17,7 @@ export default class Karma {
     Sentry.init({ dsn: process.env.SENTRY_DSN, debug });
 
     this.client = createClient({ url: process.env.REDIS_URL });
-    this.client.on("error", err => {
+    this.client.on("error", (err) => {
       if (err) {
         throw err;
       }
@@ -26,15 +26,11 @@ export default class Karma {
     const cron = new CronJob({
       cronTime: `00 25 04 01 */${INTERVAL} *`,
       onTick: () => {
-        const prev = this._key(
-          moment()
-            .subtract(1, "months")
-            .month()
-        );
+        const prev = this._key(moment().subtract(1, "months").month());
         this.clearAll(prev);
       },
       start: false,
-      timeZone: process.env.TIMEZONE
+      timeZone: process.env.TIMEZONE,
     });
 
     if (debug) {

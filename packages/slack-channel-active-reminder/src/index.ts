@@ -3,7 +3,7 @@ import {
   MessageAttachment,
   WebClient,
   AttachmentAction,
-  LogLevel
+  LogLevel,
 } from "@slack/web-api";
 import moment from "moment";
 
@@ -16,10 +16,10 @@ const defaultOptions: ChatPostMessageArguments = {
       title: "Please archive this channel",
 
       image_url:
-        "https://68.media.tumblr.com/adac611ed299098bbfd5527cacb1feb5/tumblr_o6v2n6Dwqn1vp0h0go1_500.gif"
-    }
+        "https://68.media.tumblr.com/adac611ed299098bbfd5527cacb1feb5/tumblr_o6v2n6Dwqn1vp0h0go1_500.gif",
+    },
   ],
-  text: "if not active"
+  text: "if not active",
 };
 
 export default class ActiveReminder {
@@ -36,7 +36,7 @@ export default class ActiveReminder {
       throw new Error("Invalid config");
     }
     this.web = new WebClient(API_TOKEN, {
-      logLevel
+      logLevel,
     });
     this._MAX_DATES = MAX_DATES;
     this._POST_OPTIONS = POST_OPTIONS;
@@ -45,7 +45,7 @@ export default class ActiveReminder {
   async postRemindMessage() {
     const { channels } = await this.web.conversations.list({
       exclude_archived: true,
-      exclude_members: false
+      exclude_members: false,
     });
     (channels as Array<AttachmentAction>).map(({ id }: AttachmentAction) =>
       this.checkLastMessage(id!)
@@ -55,7 +55,7 @@ export default class ActiveReminder {
   private async checkLastMessage(channel: string) {
     const { messages } = await this.web.channels.history({
       count: 1,
-      channel
+      channel,
     });
     const timestamp = (messages as Array<MessageAttachment>)[0].ts;
     const last = moment.unix(Number(timestamp));
@@ -64,11 +64,7 @@ export default class ActiveReminder {
       throw new Error(`failed parsed timestamps: ${timestamp}`);
     }
 
-    if (
-      moment()
-        .subtract(this._MAX_DATES, "days")
-        .isAfter(last)
-    ) {
+    if (moment().subtract(this._MAX_DATES, "days").isAfter(last)) {
       this.postMessage(channel);
     }
   }
@@ -76,14 +72,14 @@ export default class ActiveReminder {
   private async postMessage(channel: string) {
     const options: ChatPostMessageArguments = {
       ...defaultOptions,
-      ...this._POST_OPTIONS
+      ...this._POST_OPTIONS,
     };
 
     await this.web.chat.postMessage({
       icon_emoji: ":video_game:",
       username: "solaire",
       ...options,
-      channel
+      channel,
     });
   }
 }
