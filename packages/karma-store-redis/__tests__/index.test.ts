@@ -12,21 +12,21 @@ describe("Store", () => {
     s.quit();
   });
 
-  it("after clear", done =>
+  it("after clear", (done) =>
     s.top(-1, (err, rank) => {
       expect(rank).toHaveLength(0);
       expect(err === null).toBeTruthy();
       done();
     }));
 
-  it("random", done =>
+  it("random", (done) =>
     s.random(random.alphaNumeric(), (err, res) => {
       expect(parseInt(res, 10) === 1).toBeTruthy();
       expect(err === null).toBeTruthy();
       done();
     }));
 
-  it("++ & --", done => {
+  it("++ & --", (done) => {
     const key = random.alphaNumeric();
     const score1 = random.number({ max: 10 });
     s.up(key, score1, (_, d) => expect(d === score1.toString()).toBeTruthy());

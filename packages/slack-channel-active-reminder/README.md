@@ -1,6 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
 
 - [slack-channel-active-reminder](#slack-channel-active-reminder)
   - [Install](#install)
@@ -30,11 +30,11 @@ const reminder = new Reminder();
 
 const job = new CronJob({
   cronTime: "0 00 18 * * 1-5",
-  onTick: function() {
+  onTick: function () {
     reminder.postRemindMessage();
   },
   start: false,
-  timeZone: "Asia/Tokyo"
+  timeZone: "Asia/Tokyo",
 });
 job.start();
 ```

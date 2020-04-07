@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./lib",
     "rootDir": "src",
+    "declaration": true,
     "noEmit": false
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "botkit-karma-simple",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "increment things",
   "license": "MIT",
   "repository": {
@@ -25,6 +25,7 @@
     "karma"
   ],
   "dependencies": {
-    "karma-store-redis": "^2.0.0-beta.0"
-  }
+    "karma-store-redis": "^2.0.0-beta.1"
+  },
+  "types": "lib/index.d.ts"
 }

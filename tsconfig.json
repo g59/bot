@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
-    "incremental": true,
     "target": "esnext",
     "module": "CommonJS",
-    "composite": true,
     "noEmit": true,
     "importHelpers": true,
     "strict": true,

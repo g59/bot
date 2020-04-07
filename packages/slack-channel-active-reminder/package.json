@@ -1,6 +1,6 @@
 {
   "name": "slack-channel-active-reminder",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "remind non acctive channel at slack",
   "license": "MIT",
   "repository": {
@@ -26,7 +26,7 @@
     "slack"
   ],
   "dependencies": {
-    "@slack/web-api": "^5.6.0",
+    "@slack/web-api": "^5.8.0",
     "moment": "^2.24.0"
   },
   "types": "lib/index.d.ts"

@@ -46,7 +46,7 @@ export default class KarmaBot {
           ) as string[])[1].toLowerCase()
         );
         const n = 1;
-        this._store.up(thing, n, karma => {
+        this._store.up(thing, n, (karma) => {
           bot.reply(msg, `level up! ${thing}: +${n} (Karma: ${karma})`);
         });
       }
@@ -58,7 +58,7 @@ export default class KarmaBot {
         (msg.text!.match(/(\S+[^-\s])--(\s|$)/) as string[])[1].toLowerCase()
       );
       const n = 1;
-      this._store.down(thing, n, karma => {
+      this._store.down(thing, n, (karma) => {
         bot.reply(msg, `oops! ${thing}: -${n} (Karma: ${karma})`);
       });
     });
