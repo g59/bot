@@ -13,7 +13,6 @@
 Karma Store
 
 [![npm version](https://badge.fury.io/js/karma-store-redis.svg)](https://badge.fury.io/js/karma-store-redis)
-[![codecov](https://codecov.io/gh/9renpoto/bot/branch/master/graph/badge.svg)](https://codecov.io/gh/9renpoto/bot)
 
 ## Install
 
