@@ -11,7 +11,7 @@
     "lint:eslint": "npx eslint . --ext=ts,tsx",
     "lint:md": "textlint README.md packages/*.md packages/**/*.md",
     "lint:pkg": "lerna run lint --parallel",
-    "lint:prettier": "prettier --check './packages/**/*.{js,jsx,ts,tsx,md}'",
+    "lint:prettier": "prettier --check './{packages,example}/**/*.{js,jsx,ts,tsx}'",
     "release": "lerna exec --no-bail -- 'can-npm-publish && npm publish --registry=\"https://registry.npmjs.org/\"'",
     "start": "yarn workspace @mybot/example start",
     "test": "jest"
