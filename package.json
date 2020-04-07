@@ -1,6 +1,7 @@
 {
   "name": "@9renpoto/bot",
   "private": true,
+  "repository": "ssh://git@github.com:9renpoto/bot.git",
   "author": "github.com/9renpoto",
   "scripts": {
     "build": "lerna run build --include-dependents",
