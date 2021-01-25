@@ -28,7 +28,7 @@
     "@types/jest": "26.0.20",
     "doctoc": "2.0.0",
     "eslint": "7.18.0",
-    "faker": "5.1.0",
+    "faker": "5.2.0",
     "husky": "5.0.6",
     "jest": "26.6.3",
     "lerna-changelog": "1.0.1",
