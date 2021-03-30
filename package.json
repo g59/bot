@@ -24,7 +24,7 @@
   "devDependencies": {
     "@9renpoto/eslint-config-typescript": "7.4.0",
     "@9renpoto/textlint-config-ja": "7.4.0",
-    "@types/faker": "5.1.7",
+    "@types/faker": "5.5.0",
     "@types/jest": "26.0.22",
     "doctoc": "2.0.0",
     "eslint": "7.23.0",
