@@ -26,7 +26,7 @@
     "@9renpoto/textlint-config-ja": "7.5.0",
     "@types/faker": "5.5.8",
     "@types/jest": "27.0.2",
-    "doctoc": "2.0.1",
+    "doctoc": "2.1.0",
     "eslint": "8.0.0",
     "faker": "5.5.3",
     "husky": "7.0.2",
