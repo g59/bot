@@ -29,7 +29,7 @@
     "doctoc": "2.1.0",
     "eslint": "8.0.1",
     "faker": "5.5.3",
-    "husky": "7.0.2",
+    "husky": "7.0.4",
     "jest": "27.3.1",
     "lerna-changelog": "2.2.0",
     "lint-staged": "11.2.3",
