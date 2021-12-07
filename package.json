@@ -27,7 +27,7 @@
     "@types/faker": "5.5.9",
     "@types/jest": "27.0.3",
     "doctoc": "2.1.0",
-    "eslint": "8.4.0",
+    "eslint": "8.4.1",
     "faker": "5.5.3",
     "husky": "7.0.4",
     "jest": "27.4.3",
