@@ -16,7 +16,6 @@
   "scripts": {
     "build": "tsc -p . --outDir lib",
     "clean": "rimraf lib",
-    "lint": "eslint . --ext=ts",
     "prebuild": "npm run clean"
   },
   "files": [

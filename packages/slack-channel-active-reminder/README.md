@@ -1,14 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [slack-channel-active-reminder](#slack-channel-active-reminder)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [License](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # slack-channel-active-reminder
 
 [![npm version](https://badge.fury.io/js/slack-channel-active-reminder.svg)](https://www.npmjs.com/package/slack-channel-active-reminder)

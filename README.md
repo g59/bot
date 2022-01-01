@@ -1,16 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [bot](#bot)
-  - [Packages](#packages)
-  - [Install](#install)
-  - [Tests](#tests)
-  - [Contribute](#contribute)
-  - [license](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # bot
 
 ![Actions Status](https://github.com/9renpoto/bot/workflows/Node%20CI/badge.svg)
