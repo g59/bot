@@ -3,6 +3,9 @@
   "private": true,
   "repository": "ssh://git@github.com:9renpoto/bot.git",
   "author": "github.com/9renpoto",
+  "engines": {
+    "npm": "^8.0.0"
+  },
   "scripts": {
     "build": "npm run build --workspaces",
     "lint": "run-s -l lint:*",
