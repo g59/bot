@@ -1,27 +1,24 @@
-import { createClient, RedisClient, Callback } from "redis";
-import random = require("lodash.random");
-import * as Sentry from "@sentry/node";
 import { CronJob } from "cron";
-import moment = require("moment");
+import random from "lodash.random";
+import moment from "moment";
+import pino from "pino";
+import { createClient } from "redis";
 
 const INTERVAL: number =
   typeof process.env.INTERVAL === "string" ? Number(process.env.INTERVAL) : 3;
 const debug = process.env.NODE_ENV === "test";
 
 export default class Karma {
+  private logger = pino();
   private _PREFIX: string;
-  private client: RedisClient;
+  private client: ReturnType<typeof createClient>;
   constructor(PREFIX: string) {
     this._PREFIX = PREFIX;
 
-    Sentry.init({ dsn: process.env.SENTRY_DSN, debug });
-
-    this.client = createClient({ url: process.env.REDIS_URL });
-    this.client.on("error", (err) => {
-      if (err) {
-        throw err;
-      }
+    this.client = createClient({
+      url: process.env.REDIS_URL,
     });
+    this.client.on("error", (err) => this.logger.error(err));
 
     const cron = new CronJob({
       cronTime: `00 25 04 01 */${INTERVAL} *`,
@@ -39,8 +36,12 @@ export default class Karma {
     cron.start();
   }
 
+  connect() {
+    return this.client.connect();
+  }
+
   quit() {
-    this.client.quit();
+    return this.client.quit();
   }
 
   _key(month: number = moment().month()) {
@@ -48,46 +49,26 @@ export default class Karma {
   }
 
   clearAll(key: string) {
-    this.client.ZREMRANGEBYSCORE(key, 0, -1);
+    return this.client.zRemRangeByScore(key, 0, -1);
   }
 
-  top(n: number, cb: Callback<string[]>) {
-    this.client.zrevrange(this._key(), 0, n, "WITHSCORES", (err, res) => {
-      if (err) {
-        Sentry.captureException(err);
-      }
-      cb(err, res);
-    });
+  top(n: number) {
+    return this.client.zRangeWithScores(this._key(), 0, n, { REV: true });
   }
 
-  lowest(n: number, cb: Callback<string[]>) {
-    this.client.zrange(this._key(), 0, n, "WITHSCORES", (err, res) => {
-      if (err) {
-        Sentry.captureException(err);
-      }
-      cb(err, res);
-    });
+  lowest(n: number) {
+    return this.client.zRangeWithScores(this._key(), 0, n);
   }
 
-  up(key: string, n: number, cb: Callback<string>): void {
-    this.client.zincrby(this._key(), n, key, (err, res) => {
-      if (err) {
-        Sentry.captureException(err);
-      }
-      cb(err, res);
-    });
+  up(key: string, n: number) {
+    return this.client.zIncrBy(this._key(), n, key);
   }
 
-  down(key: string, n: number, cb: Callback<string>): void {
-    this.up(key, n * -1, cb);
+  down(key: string, n: number) {
+    return this.up(key, n * -1);
   }
 
-  random(
-    key: string,
-    cb: Callback<string>,
-    min: number = 1,
-    max: number = 1
-  ): void {
-    this.up(key, random(min, max), cb);
+  random(key: string, min: number = 1, max: number = 1) {
+    return this.up(key, random(min, max));
   }
 }

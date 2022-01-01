@@ -1,65 +1,43 @@
-import { random } from "faker";
+import { datatype } from "faker";
 import Store from "../src";
 
 describe("Store", () => {
   let s: Store;
-  beforeEach(() => {
-    s = new Store(random.alphaNumeric(30));
+  beforeAll(async () => {
+    s = new Store(datatype.string(30));
+    await s.connect();
   });
 
-  afterEach(() => {
-    s.clearAll(s._key());
-    s.quit();
+  afterAll(async () => {
+    await s.clearAll(s._key());
+    await s.quit();
   });
 
-  it("after clear", (done) =>
-    s.top(-1, (err, rank) => {
-      expect(rank).toHaveLength(0);
-      expect(err === null).toBeTruthy();
-      done();
-    }));
+  it("after clear", () => expect(s.top(-1)).resolves.toHaveLength(0));
 
-  it("random", (done) =>
-    s.random(random.alphaNumeric(), (err, res) => {
-      expect(parseInt(res, 10) === 1).toBeTruthy();
-      expect(err === null).toBeTruthy();
-      done();
-    }));
+  it("random", () => expect(s.random(datatype.string())).resolves.toBe(1));
 
-  it("++ & --", (done) => {
-    const key = random.alphaNumeric();
-    const score1 = random.number({ max: 10 });
-    s.up(key, score1, (_, d) => expect(d === score1.toString()).toBeTruthy());
+  it("++ & --", async () => {
+    const key = datatype.string();
+    const score1 = datatype.number({ max: 10 });
+    expect(s.up(key, score1)).resolves.toEqual(score1);
 
-    const score2 = random.number({ min: 0, max: 10 });
-    s.up(key, score2, (err, now) => {
-      expect(now === (score1 + score2).toString()).toBeTruthy();
-      expect(err === null).toBeTruthy();
-      s.down(key, score2, (err2, next) => {
-        expect(next === score1.toString()).toBeTruthy();
-        expect(err2 === null).toBeTruthy();
-      });
-    });
+    const score2 = datatype.number({ min: 0, max: 10 });
+    expect(s.up(key, score2)).resolves.toEqual(score1 + score2);
+    expect(s.down(key, score2)).resolves.toEqual(score1);
 
-    s.top(-1, (err, rank) => {
-      expect(rank).toHaveLength(2);
-      expect(err).toBeNull();
-      const max = parseInt(rank[1], 10);
-      for (let i = 0; i < rank.length; i += 2) {
-        expect(typeof rank[i]).toBe("string");
-        expect(parseInt(rank[i + 1], 10) <= max).toBeTruthy();
-      }
-    });
+    let ranks = await s.top(-1);
+    expect(ranks).toHaveLength(2);
+    const max = ranks[0].score;
+    for (let i = 1; i < ranks.length; i++) {
+      expect(ranks[i].score).toBeLessThan(max);
+    }
 
-    s.lowest(-1, (err, rank) => {
-      expect(rank).toHaveLength(2);
-      expect(err === null).toBeTruthy();
-      const min = parseInt(rank[1], 10);
-      for (let i = 0; i < rank.length; i += 2) {
-        expect(typeof rank[i] === "string").toBeTruthy();
-        expect(parseInt(rank[i + 1], 10) >= min).toBeTruthy();
-      }
-      done();
-    });
+    ranks = await s.lowest(-1);
+    expect(ranks).toHaveLength(2);
+    const min = ranks[0].score;
+    for (let i = 1; i < ranks.length; i++) {
+      expect(ranks[i].score).toBeGreaterThan(min);
+    }
   });
 });

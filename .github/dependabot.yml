@@ -7,13 +7,6 @@ updates:
     time: "03:00"
     timezone: Asia/Tokyo
   open-pull-requests-limit: 10
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "03:00"
-    timezone: Asia/Tokyo
-  open-pull-requests-limit: 10
 - package-ecosystem: docker
   directory: "/"
   schedule:
