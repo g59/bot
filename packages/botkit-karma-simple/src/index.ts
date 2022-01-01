@@ -41,9 +41,9 @@ export default class KarmaBot {
       ["ambient"],
       async (bot, msg) => {
         const thing = this.thingWrapper(
-          (msg.text!.match(
-            /(\S+[^+\s])\+\+(\s|$)/
-          ) as string[])[1].toLowerCase()
+          (
+            msg.text!.match(/(\S+[^+\s])\+\+(\s|$)/) as string[]
+          )[1].toLowerCase()
         );
         const n = 1;
         this._store.up(thing, n, (karma) => {

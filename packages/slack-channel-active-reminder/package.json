@@ -14,9 +14,8 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p .",
     "clean": "rimraf lib docs",
-    "lint": "tsc -p . --noEmit",
     "start": "node lib/index.js"
   },
   "files": [
