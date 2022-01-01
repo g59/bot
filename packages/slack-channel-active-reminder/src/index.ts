@@ -1,9 +1,9 @@
 import {
+  AttachmentAction,
   ChatPostMessageArguments,
+  LogLevel,
   MessageAttachment,
   WebClient,
-  AttachmentAction,
-  LogLevel,
 } from "@slack/web-api";
 import moment from "moment";
 
