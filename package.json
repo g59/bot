@@ -19,7 +19,7 @@
     "@9renpoto/eslint-config-typescript": "7.5.0",
     "@9renpoto/tsconfig": "7.5.0",
     "@swc/core": "1.2.179",
-    "@swc/jest": "0.2.20",
+    "@swc/jest": "0.2.21",
     "@types/faker": "5.5.9",
     "@types/jest": "27.5.0",
     "eslint": "8.15.0",
