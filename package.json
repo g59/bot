@@ -21,7 +21,7 @@
     "@swc/core": "1.2.197",
     "@swc/jest": "0.2.21",
     "@types/faker": "5.5.9",
-    "@types/jest": "28.1.0",
+    "@types/jest": "28.1.1",
     "eslint": "8.17.0",
     "faker": "5.5.3",
     "husky": "8.0.1",
