@@ -1,27 +1,27 @@
 import assert from "node:assert";
 import { faker } from "@faker-js/faker";
-import { afterEach, beforeEach, describe, it } from "node:test";
+import { after, before, describe, it } from "node:test";
 import Store from "../src";
 
-describe("Store", () => {
+describe("Store", async () => {
   let s: Store;
-  beforeEach(async () => {
+  await before(async () => {
     s = new Store(faker.string.alphanumeric(30));
     await s.connect();
   });
 
-  afterEach(async () => {
+  await after(async () => {
     await s.clearAll(s._key());
     await s.quit();
   });
 
-  it("after clear", async () =>
+  await it("after clear", async () =>
     assert.strictEqual((await (s.top(-1))).length, 0));
 
-  it("random", async () =>
+  await it("random", async () =>
     assert.strictEqual(await s.random(faker.string.alphanumeric()), 1));
 
-  it("++ & --", async () => {
+  await it("++ & --", async () => {
     const key = faker.string.alphanumeric();
     const score1 = faker.number.int({ max: 10 });
     assert.strictEqual(await s.up(key, score1), score1);
