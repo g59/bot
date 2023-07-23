@@ -1,43 +1,47 @@
-import { datatype } from "faker";
+import assert from "node:assert";
+import { faker } from "@faker-js/faker";
+import { afterEach, beforeEach, describe, it } from "node:test";
 import Store from "../src";
 
 describe("Store", () => {
   let s: Store;
-  beforeAll(async () => {
-    s = new Store(datatype.string(30));
+  beforeEach(async () => {
+    s = new Store(faker.string.alphanumeric(30));
     await s.connect();
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await s.clearAll(s._key());
     await s.quit();
   });
 
-  it("after clear", () => expect(s.top(-1)).resolves.toHaveLength(0));
+  it("after clear", async () =>
+    assert.strictEqual((await (s.top(-1))).length, 0));
 
-  it("random", () => expect(s.random(datatype.string())).resolves.toBe(1));
+  it("random", async () =>
+    assert.strictEqual(await s.random(faker.string.alphanumeric()), 1));
 
   it("++ & --", async () => {
-    const key = datatype.string();
-    const score1 = datatype.number({ max: 10 });
-    expect(s.up(key, score1)).resolves.toEqual(score1);
+    const key = faker.string.alphanumeric();
+    const score1 = faker.number.int({ max: 10 });
+    assert.strictEqual(await s.up(key, score1), score1);
 
-    const score2 = datatype.number({ min: 0, max: 10 });
-    expect(s.up(key, score2)).resolves.toEqual(score1 + score2);
-    expect(s.down(key, score2)).resolves.toEqual(score1);
+    const score2 = faker.number.int({ min: 0, max: 10 });
+    assert.strictEqual(await s.up(key, score2), score1 + score2);
+    assert.strictEqual(await s.down(key, score2), score1);
 
     let ranks = await s.top(-1);
-    expect(ranks).toHaveLength(2);
+    assert.strictEqual(ranks.length, 2);
     const max = ranks[0].score;
     for (let i = 1; i < ranks.length; i++) {
-      expect(ranks[i].score).toBeLessThan(max);
+      assert.ok(ranks[i].score < max);
     }
 
     ranks = await s.lowest(-1);
-    expect(ranks).toHaveLength(2);
+    assert.strictEqual(ranks.length, 2);
     const min = ranks[0].score;
     for (let i = 1; i < ranks.length; i++) {
-      expect(ranks[i].score).toBeGreaterThan(min);
+      assert.ok(ranks[i].score > min);
     }
   });
 });
