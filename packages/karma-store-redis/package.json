@@ -15,7 +15,7 @@
   "type": "module",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules --trace-warnings --loader tsx --test __tests__/*.ts",
+    "test": "node --trace-warnings --loader tsx  --test ./__tests__/index.test.ts",
     "build": "tsc -p ."
   },
   "files": [
