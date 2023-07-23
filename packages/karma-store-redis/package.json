@@ -12,9 +12,10 @@
   "bugs": {
     "url": "https://github.com/g59/bot/pulls"
   },
+  "type": "module",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node --trace-warnings --loader tsx --test __tests__/*.ts",
+    "test": "node --experimental-vm-modules --loader tsx --test __tests__/*.ts",
     "build": "tsc -p ."
   },
   "files": [
