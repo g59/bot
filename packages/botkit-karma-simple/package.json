@@ -5,17 +5,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/9renpoto/bot.git"
+    "url": "git+ssh://git@github.com/g59/bot.git"
   },
   "author": "@9renpoto",
-  "homepage": "https://github.com/9renpoto/bot/packages/botkit-karma-simple#readme",
+  "homepage": "https://github.com/g59/bot/packages/botkit-karma-simple#readme",
   "bugs": {
-    "url": "https://github.com/9renpoto/bot/issues"
+    "url": "https://github.com/g59/bot/issues"
   },
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc -p . --outDir lib",
-    "clean": "rimraf lib"
+    "build": "tsc -p . --outDir lib"
   },
   "files": [
     "lib"

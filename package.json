@@ -1,21 +1,19 @@
 {
   "name": "@9renpoto/bot",
   "private": true,
-  "repository": "ssh://git@github.com:9renpoto/bot.git",
+  "repository": "ssh://git@github.com:g59/bot.git",
   "author": "github.com/9renpoto",
-  "engines": {
-    "npm": "^9.0.0"
-  },
   "scripts": {
-    "build": "npm run build --workspaces",
+    "build": "turbo build",
     "lint": "eslint . --ext=ts,tsx",
     "test": "npm run test --workspaces"
   },
   "devDependencies": {
-    "@9renpoto/eslint-config-typescript": "7.7.2",
-    "@9renpoto/tsconfig": "7.7.2",
-    "husky": "8.0.3",
-    "lint-staged": "13.2.3"
+    "@9renpoto/eslint-config-typescript": "^7.7.0",
+    "@9renpoto/tsconfig": "^7.7.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "turbo": "^1.10.9"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

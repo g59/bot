@@ -5,18 +5,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/9renpoto/bot/packages/karma-store-redis.git"
+    "url": "git+ssh://git@github.com/g59/bot/packages/karma-store-redis.git"
   },
-  "author": "Keisuke Kan <@9renpoto>",
-  "homepage": "https://github.com/9renpoto/bot/packages/karma-store-redis#readme",
+  "author": "Keisuke Umeno <@9renpoto>",
+  "homepage": "https://github.com/g59/bot/packages/karma-store-redis#readme",
   "bugs": {
-    "url": "https://github.com/9renpoto/bot/pulls"
+    "url": "https://github.com/g59/bot/pulls"
   },
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc -p . --outDir lib",
-    "clean": "rimraf lib",
-    "prebuild": "npm run clean"
+    "build": "tsc -p ."
   },
   "files": [
     "lib"
@@ -26,11 +24,13 @@
     "redis"
   ],
   "dependencies": {
-    "@types/lodash.random": "^3.2.6",
     "cron": "^2.0.0",
     "lodash.random": "^3.2.0",
     "pino": "^8.0.0",
     "redis": "^4.0.1"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@types/lodash.random": "^3.2.7"
+  }
 }
