@@ -6,7 +6,7 @@
   "scripts": {
     "build": "turbo build",
     "lint": "eslint . --ext=ts,tsx",
-    "test": "npm run test --workspaces"
+    "test": "turbo test"
   },
   "devDependencies": {
     "@9renpoto/eslint-config-typescript": "^7.7.0",
